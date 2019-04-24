@@ -3,15 +3,18 @@
 // @grant         GM.xmlHttpRequest
 // @icon          https://raw.githubusercontent.com/transmission/transmission-icons/master/Transmission-Icon-32.png
 // @match         https://*.iptorrents.com/*
+// @match         https://*.karagarga.in/*
 // @name          Add torrents to Transmission via RPC
-// @version       1.1
+// @version       1.2
 // ==/UserScript==
 
 /*
  * Tunables
  */
 var debug = false;
-var downloadDir = "";
+var downloadDir = {
+  "domain.tld": "/absolute/path/to/download/dir"
+};
 var transmissionRpcUrl = "https://username:password@hostname:port/rpc";
 var linkOpacity = 0.5;
 
@@ -55,8 +58,8 @@ function cbResponse(torrent, r) {
       }
     }, "");
 
-  if (downloadDir.length) {
-    args.arguments["download-dir"] = downloadDir;
+  if (document.domain in downloadDir) {
+    args.arguments["download-dir"] = downloadDir[document.domain];
   }
   logDebug("[Transmission] HEAD request completed, sending POST request");
   GM.xmlHttpRequest({
@@ -92,7 +95,7 @@ function logDebug(msg) {
 function main() {
   logDebug("[Transmission] Entry point");
   for (let link of document.links) {
-    if (link.href.match(/\.torrent$/i)) {
+    if (link.href.match(/\.torrent(\?.*|)$/i)) {
       link.addEventListener("click", cbClick, true);
       link.style.opacity = linkOpacity;
       logDebug("[Transmission] Registered " + link.href);
