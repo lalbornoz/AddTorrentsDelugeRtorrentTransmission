@@ -15,7 +15,8 @@ var debug = false;
 var downloadDir = {
   "domain.tld": "/absolute/path/to/download/dir"
 };
-var transmissionRpcUrl = "https://username:password@hostname:port/rpc";
+var transmissionRpcAuth = "username:password";
+var transmissionRpcUrl = "https://hostname:port/rpc";
 var linkOpacity = 0.5;
 
 // {{{ function cbClick(e)
@@ -32,6 +33,7 @@ function cbClick(e) {
         &&  (r.status === 200)) {
           logDebug("[Transmission] Sending HEAD request to " + transmissionRpcUrl);
           GM.xmlHttpRequest({
+            headers: {"Authorization": ("Basic " + btoa(transmissionRpcAuth))},
             method: "HEAD",
             onload: function (r_) {cbResponse(r.response, r_)},
             synchronous: false,
@@ -66,7 +68,8 @@ function cbResponse(torrent, r) {
   logDebug("[Transmission] HEAD request completed, sending POST request");
   GM.xmlHttpRequest({
     data: JSON.stringify(args),
-    headers: {"Accept": "text/xml", "X-Transmission-Session-Id": sessionId},
+    headers: {"Accept": "text/xml", "X-Transmission-Session-Id": sessionId,
+              "Authorization": ("Basic " + btoa(transmissionRpcAuth))},
     method: "POST",
     onload: cbResponsePost,
     synchronous: false,
@@ -76,7 +79,7 @@ function cbResponse(torrent, r) {
 // }}}
 // {{{ function cbResponsePost(r)
 function cbResponsePost(r) {
-  logDebug("[Transmission] POST request completed");
+  logDebug("[Transmission] POST request completed, response=" + r.responseText);
   r_ = JSON.parse(r.responseText);
   if ("torrent-added" in r_.arguments) {
     alert("Torrent added successfully as #" + r_.arguments["torrent-added"].id.toString());
