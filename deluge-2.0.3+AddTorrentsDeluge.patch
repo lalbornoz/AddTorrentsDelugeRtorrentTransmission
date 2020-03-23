@@ -30,7 +30,7 @@
                  )
                  deferreds.append(d)
 -        return DeferredList(deferreds, consumeErrors=False)
-+        return DeferredList(deferreds, consumeErrors=False, fireOnOneErrback=True)
++        return DeferredList(deferreds, consumeErrors=True, fireOnOneErrback=True)
  
      def _get_host(self, host_id):
          """Information about a host from supplied host id.
