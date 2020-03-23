@@ -5,8 +5,9 @@
 // @homepageURL   https://github.com/lalbornoz/AddTorrentsDelugeTransmission
 // @include       *
 // @name          Add torrents to Deluge via Web API
+// @namespace     https://greasyfork.org/users/467795
 // @supportURL    https://github.com/lalbornoz/AddTorrentsDelugeTransmission
-// @version       1.0
+// @version       1.1
 // ==/UserScript==
 
 /*
