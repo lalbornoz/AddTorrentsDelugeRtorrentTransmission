@@ -8,7 +8,7 @@
 // @name          Add torrents to Deluge via Web API
 // @namespace     https://greasyfork.org/users/467795
 // @supportURL    https://github.com/lalbornoz/AddTorrentsDelugeTransmission
-// @version       1.2
+// @version       1.3
 // ==/UserScript==
 
 /*
@@ -48,18 +48,22 @@ function delugeWebRequest(method, onLoadCb, params) {
     headers:      headers,
     method:       "POST",
     onload:       function (xhr) {
-                    let response = JSON.parse(xhr.responseText);
+                    let response = null;
+                    try {
+                      response = JSON.parse(xhr.responseText);
+                    }
+                    catch (error) {
+                      logError("Error parsing response from server as JSON: "
+                               + xhr.responseText);
+                    }
                     if (response.error === null) {
-                      logDebug("[Deluge] Asynchronous `" + method
+                      logDebug("Asynchronous `" + method
                                + "' Web API request succeeded w/ response="
                                + JSON.stringify(response));
                     } else {
-                      logDebug("[Deluge] Asynchronous `" + method
+                      logError("Asynchronous `" + method
                                + "' Web API request failed: " + response.error.message
                                + " (code " + response.error.code.toString() + ")");
-                      alert("[Deluge] Asynchronous `" + method
-                            + "' Web API request failed: " + response.error.message
-                            + " (code " + response.error.code.toString() + ")");
                     };
                     onLoadCb(response, xhr);
                   },
@@ -71,7 +75,7 @@ function delugeWebRequest(method, onLoadCb, params) {
     xhrParams["password"] = delugeHttpAuthPassword;
     xhrParams["user"] = delugeHttpAuthUsername;
   };
-  logDebug("[Deluge] POSTing asynchronous `" + method + "' Web API request to " + xhrParams["url"]
+  logDebug("POSTing asynchronous `" + method + "' Web API request to " + xhrParams["url"]
            + " (JSON-encoded parameters: " + paramsJson + ")");
   GM.xmlHttpRequest(xhrParams);
 };
@@ -87,8 +91,20 @@ function JavaScriptIsFuckingWorthless(FuckYou) {
 // {{{ function logDebug(msg)
 function logDebug(msg) {
   if (debug) {
-    console.log(msg);
+    console.log("[Deluge] " + msg);
   }
+}
+// }}}
+// {{{ function logError(msg)
+function logError(msg) {
+  logDebug(msg);
+  alert("[Deluge] " + msg);
+}
+// }}}
+// {{{ function logInfo(msg)
+function logInfo(msg) {
+  logDebug(msg);
+  alert("[Deluge] " + msg);
 }
 // }}}
 // {{{ function matchHostDict(dict, host)
@@ -111,14 +127,14 @@ function cbClick(e) {
     e.stopPropagation(); e.preventDefault();
     let torrentUrlHost = torrentUrl.match(new RegExp("^[^:]+://(?:[^:]+:[^@]+@)?([^/:]+)"));
     if (torrentUrlHost === null) {
-      logDebug("[Deluge] Failed to obtain hostname from BitTorrent URL " + torrentUrl);
+      logDebug("Failed to obtain hostname from BitTorrent URL " + torrentUrl);
     } else {
       torrentUrlHost = torrentUrlHost[1];
       let torrentDownloadDir = "";
       if ((torrentDownloadDir = matchHostDict(delugeDownloadDir, torrentUrlHost)) === null) {
         torrentDownloadDir = delugeDownloadDir[""];
       };
-      logDebug("[Deluge] Sending asynchronous GET request for " + torrentUrl);
+      logDebug("Sending asynchronous GET request for " + torrentUrl);
       GM.xmlHttpRequest({
         method:             "GET",
         onreadystatechange: function (xhr) {
@@ -130,13 +146,13 @@ function cbClick(e) {
       });
     };
   } else {
-    logDebug("[Deluge] Ignoring " + torrentUrl + " due to <Ctrl> modifier.");
+    logDebug("Ignoring " + torrentUrl + " due to <Ctrl> modifier.");
   };
 };
 // }}}
 // {{{ function cbClickResponse(torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr)
 function cbClickResponse(torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr) {
-  logDebug("[Deluge] Asynchronous GET request for " + torrentUrl
+  logDebug("Asynchronous GET request for " + torrentUrl
            + " readyState=" + xhr.readyState + " status=" + xhr.status);
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
@@ -145,7 +161,7 @@ function cbClickResponse(torrent, torrentDownloadDir, torrentName, torrentUrl, t
                       cbWebLoginResponse(response, torrent, torrentDownloadDir, torrentName, xhr_);
                     }, [delugeWebPassword]);
     } else {
-      logDebug("[Deluge] Asynchronous GET request for " + torrentUrl
+      logDebug("Asynchronous GET request for " + torrentUrl
                + " failed w/ status=" + xhr.status);
     };
   };
@@ -188,19 +204,18 @@ function cbWebGetConfigResponse(response, torrent, torrentDownloadDir, torrentNa
 // {{{ function cbWebAddTorrentsResponse(response, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr)
 function cbWebAddTorrentsResponse(response, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr) {
   if (response.error === null) {
-    logDebug("[Deluge] Torrent `" + torrentName + "' added successfully.");
-    alert("[Deluge] Torrent `" + torrentName + "' added successfully.");
+    logInfo("Torrent `" + torrentName + "' added successfully.");
   };
 };
 // }}}
 
 function main() {
-  logDebug("[Deluge] Entry point");
+  logDebug("Entry point");
   for (let link of document.links) {
     if (link.href.match(/\.torrent(\?.*|)$/i)) {
       link.addEventListener("click", cbClick, true);
       link.style.opacity = linkOpacity;
-      logDebug("[Deluge] Registered " + link.href);
+      logDebug("Registered " + link.href);
     }
   }
 }
