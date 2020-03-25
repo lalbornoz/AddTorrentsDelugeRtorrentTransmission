@@ -8,7 +8,7 @@
 // @name          Add torrents to Deluge via Web API
 // @namespace     https://greasyfork.org/users/467795
 // @supportURL    https://github.com/lalbornoz/AddTorrentsDelugeTransmission
-// @version       1.5
+// @version       1.6
 // ==/UserScript==
 
 /*
@@ -99,6 +99,17 @@ function isTorrentLink(url) {
 // {{{ function JavaScriptIsFuckingGarbage(SodOff)
 function JavaScriptIsFuckingGarbage(SodOff) {
   return decodeURI(SodOff).replace(/\+/g, " ");
+};
+// }}}
+// {{{ function JavaScriptIsFuckingRubbish()
+function JavaScriptIsFuckingRubbish() {
+  if(window.Prototype) {
+    logDebug("Prototype.js detected, deleting possibly broken {Object,Array,Hash,String}.prototype.toJSON() functions");
+    delete Object.prototype.toJSON;
+    delete Array.prototype.toJSON;
+    delete Hash.prototype.toJSON;
+    delete String.prototype.toJSON;
+  };
 };
 // }}}
 // {{{ function JavaScriptIsFuckingWorthless(FuckYou)
@@ -262,6 +273,7 @@ function cbWebAddTorrentsResponse(response, torrent, torrentDownloadDir, torrent
 
 function main() {
   logDebug("Entry point");
+  JavaScriptIsFuckingRubbish();
   for (let link of document.links) {
     if (isMagnetLink(link.href)) {
       link.addEventListener("click", cbClickMagnet, true);
