@@ -4,9 +4,10 @@ Add torrents to Deluge via Web API (requires patched deluge-web[\[1](#r1)]
 owing to missing functionality & unfixed bugs and ViolentMonkey due to 3rd-party
 cookies)  
   
-Eligible torrent links will have their opacity adjusted as per ``linkOpacity``
-and queued on-click; the ``<Ctrl>`` key held on-click inhibits script processing
-of torrent links to allow downloading a torrent file.
+Eligible BitTorrent and/or Magnet links will have their opacity adjusted as per
+``linkOpacity`` and queued on-click; the ``<Ctrl>`` key held on-click inhibits
+script processing of BitTorrent and Magnet links to e.g. allow downloading a
+BitTorrent file or Magnet protocol handlers to be run.
   
 This script requires in-script configuration prior to usage. Consult the
 following table and set, at minimum, ``delugeDownloadDir``, ``delugeHostId``,

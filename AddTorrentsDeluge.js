@@ -8,7 +8,7 @@
 // @name          Add torrents to Deluge via Web API
 // @namespace     https://greasyfork.org/users/467795
 // @supportURL    https://github.com/lalbornoz/AddTorrentsDelugeTransmission
-// @version       1.4
+// @version       1.5
 // ==/UserScript==
 
 /*
@@ -53,7 +53,7 @@ function delugeWebRequest(method, onLoadCb, params) {
                     catch (error) {
                       logError("Error parsing response from server as JSON: "
                                + xhr.responseText);
-                    }
+                    };
                     if (response.error === null) {
                       logDebug("Asynchronous `" + method
                                + "' Web API request succeeded w/ response="
@@ -78,32 +78,55 @@ function delugeWebRequest(method, onLoadCb, params) {
   GM.xmlHttpRequest(xhrParams);
 };
 // }}}
-// {{{ function JavaScriptIsFuckingWorthless()
+// {{{ function isMagnetLink(url)
+function isMagnetLink(url) {
+  if (url.match(/^magnet:/i)) {
+    return true;
+  } else {
+    return false;
+  };
+};
+// }}}
+// {{{ function isTorrentLink(url)
+function isTorrentLink(url) {
+  if (url.match(/\.torrent(\?.*|)$/i)) {
+    return true;
+  } else {
+    return false;
+  };
+};
+// }}}
+// {{{ function JavaScriptIsFuckingGarbage(SodOff)
+function JavaScriptIsFuckingGarbage(SodOff) {
+  return decodeURI(SodOff).replace(/\+/g, " ");
+};
+// }}}
+// {{{ function JavaScriptIsFuckingWorthless(FuckYou)
 function JavaScriptIsFuckingWorthless(FuckYou) {
   return btoa(new Uint8Array(FuckYou).reduce(
     function(data, byte) {
       return data + String.fromCharCode(byte);
     }, ""));
-}
+};
 // }}}
 // {{{ function logDebug(msg)
 function logDebug(msg) {
   if (debug) {
     console.log("[Deluge] " + msg);
-  }
-}
+  };
+};
 // }}}
 // {{{ function logError(msg)
 function logError(msg) {
   logDebug(msg);
   alert("[Deluge] " + msg);
-}
+};
 // }}}
 // {{{ function logInfo(msg)
 function logInfo(msg) {
   logDebug(msg);
   alert("[Deluge] " + msg);
-}
+};
 // }}}
 // {{{ function matchHostDict(dict, host)
 function matchHostDict(dict, host) {
@@ -114,14 +137,37 @@ function matchHostDict(dict, host) {
     return dict[hostDomain];
   } else {
     return dict[""];
-  }
+  };
 };
 // }}}
 
-// {{{ function cbClick(e)
-function cbClick(e) {
+// {{{ function cbClickMagnet(e)
+function cbClickMagnet(e) {
   let torrentUrl = this.href;
-  if (!e.ctrlKey) {
+  if (e.ctrlKey) {
+    logDebug("Ignoring " + torrentUrl + " due to <Ctrl> modifier.");
+  } else {
+    e.stopPropagation(); e.preventDefault();
+    let torrentName = torrentUrl.match(/dn=([^&]+)/);
+    if (torrentName === null) {
+      logError("Invalid Magnet URI (missing Display Name)");
+    } else {
+      torrentName = JavaScriptIsFuckingGarbage(torrentName[1]);
+      delugeWebRequest("auth.login",
+                       function (response, xhr_) {
+                         cbWebLoginResponse(response, null, delugeDownloadDir[""],
+                                            torrentName, torrentUrl, null, xhr_);
+                       }, [delugeWebPassword]);
+    };
+  };
+};
+// }}}
+// {{{ function cbClickTorrent(e)
+function cbClickTorrent(e) {
+  let torrentUrl = this.href;
+  if (e.ctrlKey) {
+    logDebug("Ignoring " + torrentUrl + " due to <Ctrl> modifier.");
+  } else {
     e.stopPropagation(); e.preventDefault();
     let torrentUrlHost = torrentUrl.match(new RegExp("^[^:]+://(?:[^:]+:[^@]+@)?([^/:]+)"));
     if (torrentUrlHost === null) {
@@ -136,15 +182,15 @@ function cbClick(e) {
       GM.xmlHttpRequest({
         method:             "GET",
         onreadystatechange: function (xhr) {
-                              cbClickResponse(xhr.response, torrentDownloadDir, basename(torrentUrl), torrentUrl, torrentUrlHost, xhr);
+                              cbClickResponse(xhr.response, torrentDownloadDir,
+                                              basename(torrentUrl), torrentUrl,
+                                              torrentUrlHost, xhr);
                             },
         responseType:       "arraybuffer",
         synchronous:        false,
         url:                torrentUrl
       });
     };
-  } else {
-    logDebug("Ignoring " + torrentUrl + " due to <Ctrl> modifier.");
   };
 };
 // }}}
@@ -155,9 +201,10 @@ function cbClickResponse(torrent, torrentDownloadDir, torrentName, torrentUrl, t
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
       delugeWebRequest("auth.login",
-                    function (response, xhr_) {
-                      cbWebLoginResponse(response, torrent, torrentDownloadDir, torrentName, xhr_);
-                    }, [delugeWebPassword]);
+                       function (response, xhr_) {
+                         cbWebLoginResponse(response, torrent, torrentDownloadDir,
+                                            torrentName, torrentUrl, torrentUrlHost, xhr_);
+                       }, [delugeWebPassword]);
     } else {
       logDebug("Asynchronous GET request for " + torrentUrl
                + " failed w/ status=" + xhr.status);
@@ -169,9 +216,10 @@ function cbClickResponse(torrent, torrentDownloadDir, torrentName, torrentUrl, t
 function cbWebLoginResponse(response, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr) {
   if (response.error === null) {
     delugeWebRequest("web.connect",
-                  function (response_, xhr_) {
-                    cbWebConnectResponse(response_, torrent, torrentDownloadDir, torrentName, torrentUrl, xhr_);
-                  }, [delugeHostId]);
+                     function (response_, xhr_) {
+                       cbWebConnectResponse(response_, torrent, torrentDownloadDir,
+                                            torrentName, torrentUrl, xhr_);
+                     }, [delugeHostId]);
   };
 };
 // }}}
@@ -179,23 +227,28 @@ function cbWebLoginResponse(response, torrent, torrentDownloadDir, torrentName, 
 function cbWebConnectResponse(response, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr) {
   if (response.error === null) {
     delugeWebRequest("web.get_config",
-                  function (response_, xhr_) {
-                    cbWebGetConfigResponse(response_, torrent, torrentDownloadDir, torrentName, torrentUrl, xhr_);
-                  }, []);
+                     function (response_, xhr_) {
+                       cbWebGetConfigResponse(response_, torrent, torrentDownloadDir,
+                                              torrentName, torrentUrl, xhr_);
+                     }, []);
   };
 };
 // }}}
 // {{{ function cbWebGetConfigResponse(response, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr)
 function cbWebGetConfigResponse(response, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr) {
   if (response.error === null) {
-    let params = [{
-      data:     JavaScriptIsFuckingWorthless(torrent),
-      options:  {"download_location": torrentDownloadDir},
-      path:     delugeTorrentDirectory + "/" + torrentName}];
+    let params = [{options: {"download_location": torrentDownloadDir}}];
+    if (isMagnetLink(torrentUrl)) {
+      params[0]["path"] = torrentUrl;
+    } else {
+      params[0]["data"] = JavaScriptIsFuckingWorthless(torrent);
+      params[0]["path"] = delugeTorrentDirectory + "/" + torrentName;
+    };
     delugeWebRequest("web.add_torrents",
-                  function (response_, xhr_) {
-                    cbWebAddTorrentsResponse(response_, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr_);
-                  }, [params]);
+                     function (response_, xhr_) {
+                       cbWebAddTorrentsResponse(response_, torrent, torrentDownloadDir,
+                                                torrentName, torrentUrl, torrentUrlHost, xhr_);
+                     }, [params]);
   };
 };
 // }}}
@@ -210,13 +263,17 @@ function cbWebAddTorrentsResponse(response, torrent, torrentDownloadDir, torrent
 function main() {
   logDebug("Entry point");
   for (let link of document.links) {
-    if (link.href.match(/\.torrent(\?.*|)$/i)) {
-      link.addEventListener("click", cbClick, true);
+    if (isMagnetLink(link.href)) {
+      link.addEventListener("click", cbClickMagnet, true);
       link.style.opacity = linkOpacity;
-      logDebug("Registered " + link.href);
-    }
-  }
-}
+      logDebug("Registered Magnet link " + link.href);
+    } else if (isTorrentLink(link.href)) {
+      link.addEventListener("click", cbClickTorrent, true);
+      link.style.opacity = linkOpacity;
+      logDebug("Registered BitTorrent link " + link.href);
+    };
+  };
+};
 
 main();
 
