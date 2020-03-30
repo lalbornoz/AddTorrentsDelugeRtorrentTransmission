@@ -18,7 +18,7 @@ following table and set, at minimum, ``delugeDownloadDir``, ``delugeHostId``,
 | ---------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------- |
 | debug                  | false                               | Print debugging messages to Web console                                                     |
 | delugeDownloadDir      | ``"": "/var/lib/deluge/downloads"`` | Ordered dictionary of hostname and domain name keys mapping to download directory pathnames |
-| delugeHostId           |                                     | Deluge host identifier (see ``<deluge directory>/.config/deluge/hostlist.conf``             |
+| delugeHostId           |                                     | Deluge host identifier (see ``<deluge directory>/.config/deluge/hostlist.conf``)            |
 | delugeHttpAuthPassword |                                     | HTTP basic access authentication password (optional)                                        |
 | delugeHttpAuthUsername |                                     | HTTP basic access authentication username (optional)                                        |
 | delugeTorrentDirectory | /var/lib/deluge/torrents            | Torrent directory pathname                                                                  |
