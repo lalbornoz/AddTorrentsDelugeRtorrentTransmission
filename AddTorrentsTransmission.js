@@ -6,8 +6,8 @@
 // @license       MIT
 // @name          Add torrents to Transmission via RPC
 // @namespace     https://greasyfork.org/users/467795
-// @supportURL    https://github.com/lalbornoz/AddTorrentsDelugeTransmission
-// @version       1.5
+// @supportURL    https://github.com/lalbornoz/AddTorrentsDelugeRtorrentTransmission
+// @version       1.6
 // ==/UserScript==
 
 /*
@@ -122,7 +122,7 @@ function logInfo(msg) {
 // }}}
 // {{{ function matchHostDict(dict, host)
 function matchHostDict(dict, host) {
-  let hostDomain = host.split(".").slice(-2);
+  let hostDomain = host.split(".").slice(-2).join(".");
   if (host in dict) {
     return dict[host];
   } else if (hostDomain in dict) {

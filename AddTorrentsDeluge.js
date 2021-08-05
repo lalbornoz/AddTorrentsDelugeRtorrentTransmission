@@ -1,14 +1,14 @@
 // ==UserScript==
 // @description   Add torrents to Deluge via Web API (requires patched deluge-web and ViolentMonkey)
-// @downloadURL   https://raw.githubusercontent.com/lalbornoz/AddTorrentsDelugeTransmission/master/AddTorrentsDeluge.js
+// @downloadURL   https://raw.githubusercontent.com/lalbornoz/AddTorrentsDelugeRtorrentTransmission/master/AddTorrentsDeluge.js
 // @grant         GM.xmlHttpRequest
-// @homepageURL   https://github.com/lalbornoz/AddTorrentsDelugeTransmission
+// @homepageURL   https://github.com/lalbornoz/AddTorrentsDelugeRtorrentTransmission
 // @include       *
 // @license       MIT
 // @name          Add torrents to Deluge via Web API
 // @namespace     https://greasyfork.org/users/467795
-// @supportURL    https://github.com/lalbornoz/AddTorrentsDelugeTransmission
-// @version       1.8
+// @supportURL    https://github.com/lalbornoz/AddTorrentsDelugeRtorrentTransmission
+// @version       1.9
 // ==/UserScript==
 
 /*
@@ -97,7 +97,7 @@ function isTorrentLink(url) {
 // }}}
 // {{{ function matchHostDict(dict, host)
 function matchHostDict(dict, host) {
-  let hostDomain = host.split(".").slice(-2);
+  let hostDomain = host.split(".").slice(-2).join(".");
   if (host in dict) {
     return dict[host];
   } else if (hostDomain in dict) {
