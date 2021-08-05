@@ -8,29 +8,29 @@
 // @name          Add torrents to rtorrent via XML-RPC API
 // @namespace     https://greasyfork.org/users/467795
 // @supportURL    https://github.com/lalbornoz/AddTorrentsRtorrentTransmission
-// @version       1.0
+// @version       1.1
 // ==/UserScript==
 
 /*
  * Tunables
  */
-let debug = true;                                         // debugging output on console
-let rtorrentStartOnAdd = true;                            // start torrents on adding
-let rtorrentDownloadDir = {                               // {host,domain}-indexed download directory map
+let debug = true;                                           // debugging output on console
+let rtorrentDownloadDir = {                                 // {host,domain}-indexed download directory map
 //  "domain.tld": "/var/lib/_rtorrent/download.domain.tld",
 //  "host.domain.tld": "/var/lib/_rtorrent/download.host.domain.tld",
   "": "/var/lib/_rtorrent/download",
 };
-let rtorrentHttpAuth = {                                  // HTTP basic auth username & password (optional)
+let rtorrentHttpAuth = {                                    // HTTP basic auth username & password (optional but HIGHLY RECOMMENDED)
   "username": "",
   "password": "",
 };
+let rtorrentStartOnAdd = true;                              // start torrents on adding
+let rtorrentXmlRpcApi = "https://<HOSTNAME>[:<PORT>]/RPC2"; // URL to rtorrent XML-RPC API (MUST BE SPECIFIED)
 
-let rtorrentMethods = {                                   // rtorrent XML-RPC API method name map
+let rtorrentMethods = {                                     // rtorrent XML-RPC API method name map
   "magnet":   {false: "load.normal",  true: "load.start"},
   "torrent":  {false: "load.raw",     true: "load.raw_start"},
 };
-let rtorrentWebUrl = "https://<HOSTNAME>[:<PORT>]/RPC2";  // URL to rtorrent XML-RPC API (MUST BE SPECIFIED)
 
 // {{{ Images
 let images = {
@@ -237,7 +237,7 @@ function postXmlRpcRequest(e, method, torrent, torrentDirectory, torrentType, on
     method:       "POST",
     onload:       function (xhr) { parseXmlRpcResponse(e, xhr, onLoadCb); },
     synchronous:  false,
-    url:          rtorrentWebUrl
+    url:          rtorrentXmlRpcApi
   };
 
   if ((rtorrentHttpAuth["password"] !== "")

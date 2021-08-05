@@ -25,6 +25,26 @@ following table and set, at minimum, ``delugeDownloadDir``, ``delugeHostId``,
 | delugeWebPassword      |                                     | Deluge host web password                                                                    |
 | delugeWebUrl           | protocol://hostname[:port]/deluge   | URL to deluge-web                                                                           |
 
+# AddTorrentsRtorrent.js
+
+Add torrents to rtorrent via XML-RPC API  
+  
+Eligible BitTorrent and/or Magnet links will have a clickable progress bar
+appended to them and may be queued on-click; refer to their tooltips for a
+detailed progress update.  
+  
+This script requires in-script configuration prior to usage. Consult the
+following table and set, at minimum, ``rtorrentDownloadDir``, ``rtorrentHttpAuth``,
+and ``rtorrentXmlRpcApi``.  
+  
+| Variable name       | Default value                           | Description                                                                                 |
+| ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------- |
+| debug               | ``false``                               | Print debugging messages to Web console                                                     |
+| rtorrentDownloadDir | ``{"": "/var/lib/_rtorrent/download"}`` | Ordered dictionary of hostname and domain name keys mapping to download directory pathnames |
+| rtorrentHttpAuth    | ``{"username": "", "password": ""}``    | HTTP basic access authentication password & username (optional but HIGHLY RECOMMENDED)      |
+| rtorrentStartOnAdd  | ``true``                                | Start torrents on adding                                                                    |
+| rtorrentXmlRpcApi   | ``https://<HOSTNAME>[:<PORT>]/RPC2``    | URL to rtorrent XML-RPC API                                                                 |
+
 # AddTorrentsTransmission.js
 
 Add torrents to Transmission via RPC API
