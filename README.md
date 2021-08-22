@@ -31,7 +31,9 @@ Add torrents to rtorrent via XML-RPC API
   
 Eligible BitTorrent and/or Magnet links will have a clickable progress bar
 appended to them and may be queued on-click; refer to their tooltips for a
-detailed progress update.  
+detailed progress update. The ``<Ctrl>`` key held on-click inhibits script
+processing of torrent links to allow downloading a torrent file. The ``<Alt>``
+key held on-click enables sequential downloading (requires jesec/rtorrent&lbrack;[4](https://github.com/jesec/rtorrent)&rbrack;.)  
   
 This script requires in-script configuration prior to usage. Consult the
 following table and set, at minimum, ``rtorrentDownloadDir``, ``rtorrentHttpAuth``,
@@ -70,5 +72,6 @@ and ``transmissionRpcUrl``.
 * ``Wed, 25 Mar 2020 11:00:50 +0100 [1]`` <a href="https://raw.githubusercontent.com/lalbornoz/AddTorrentsDelugeTransmission/master/deluge-2.0.3%2BAddTorrentsDeluge.patch" id="r1">deluge-2.0.3+AddTorrentsDeluge.patch</a>  
 * ``Mon, 30 Mar 2020 14:02:23 +0200 [2]`` <a href="https://dev.deluge-torrent.org/ticket/3366" id="r2">#3366 (WebApi.add_torrents(): deferred RPC failure results are not propagated) – Deluge</a>  
 * ``Mon, 30 Mar 2020 14:02:30 +0200 [3]`` <a href="https://dev.deluge-torrent.org/ticket/3367" id="r3">#3367 (WebApi.add_torrents(): implement in-stream BitTorrent file uploading support) – Deluge</a>  
+* ``Sun, 22 Aug 2021 11:40:29 +0200 [4]`` <a href="https://github.com/jesec/rtorrent" id="r4">GitHub - jesec/rtorrent: stable, high-performance and low resource consumption BitTorrent client</a>  
 
 [modeline]: # ( vim: set ff=dos tw=0: )

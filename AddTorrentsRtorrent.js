@@ -1,5 +1,5 @@
 // ==UserScript==
-// @description   Add torrents to rtorrent via XML-RPC API (requires ViolentMonkey)
+// @description   Add torrents to rtorrent via XML-RPC API (requires ViolentMonkey and jesec/rtorrent for sequential downloads w/ <Alt> modifier)
 // @downloadURL   https://raw.githubusercontent.com/lalbornoz/AddTorrentsRtorrentTransmission/master/AddTorrentsRtorrent.js
 // @grant         GM.xmlHttpRequest
 // @homepageURL   https://github.com/lalbornoz/AddTorrentsRtorrentTransmission
@@ -8,29 +8,30 @@
 // @name          Add torrents to rtorrent via XML-RPC API
 // @namespace     https://greasyfork.org/users/467795
 // @supportURL    https://github.com/lalbornoz/AddTorrentsRtorrentTransmission
-// @version       1.1
+// @version       1.2
 // ==/UserScript==
 
 /*
  * Tunables
  */
+
 let debug = true;                                           // debugging output on console
+
 let rtorrentDownloadDir = {                                 // {host,domain}-indexed download directory map
-//  "domain.tld": "/var/lib/_rtorrent/download.domain.tld",
-//  "host.domain.tld": "/var/lib/_rtorrent/download.host.domain.tld",
+  "domain.tld": "/var/lib/_rtorrent/download.domain.tld",
+  "host.domain.tld": "/var/lib/_rtorrent/download.host.domain.tld",
   "": "/var/lib/_rtorrent/download",
 };
 let rtorrentHttpAuth = {                                    // HTTP basic auth username & password (optional but HIGHLY RECOMMENDED)
   "username": "",
   "password": "",
 };
-let rtorrentStartOnAdd = true;                              // start torrents on adding
-let rtorrentXmlRpcApi = "https://<HOSTNAME>[:<PORT>]/RPC2"; // URL to rtorrent XML-RPC API (MUST BE SPECIFIED)
-
 let rtorrentMethods = {                                     // rtorrent XML-RPC API method name map
   "magnet":   {false: "load.normal",  true: "load.start"},
   "torrent":  {false: "load.raw",     true: "load.raw_start"},
 };
+let rtorrentStartOnAdd = true;                              // start torrents on adding
+let rtorrentXmlRpcApi = "https://<HOSTNAME>[:<PORT>]/RPC2"; // URL to rtorrent XML-RPC API (MUST BE SPECIFIED)
 
 // {{{ Images
 let images = {
@@ -219,8 +220,9 @@ function parseXmlRpcResponse(e, xhr, onLoadCb) {
   onLoadCb(error);
 };
 // }}}
-// {{{ function postXmlRpcRequest(e, method, torrent, torrentDirectory, torrentType, onLoadCb)
-function postXmlRpcRequest(e, method, torrent, torrentDirectory, torrentType, onLoadCb) {
+// {{{ function postXmlRpcRequest(e, downSequential, method, torrent, torrentDirectory, torrentType, onLoadCb)
+function postXmlRpcRequest(e, downSequential, method, torrent, torrentDirectory, torrentType, onLoadCb) {
+  let downSequentialSet = downSequential ? "<param><value><string>d.down.sequential.set=1</string></value></param>" : "";
   let headers = {"Content-type": "text/xml"};
   let xhrParams = {
     anonymous:    false,
@@ -231,6 +233,7 @@ function postXmlRpcRequest(e, method, torrent, torrentDirectory, torrentType, on
     <param><value><string></string></value></param>
     <param><value><${torrentType}>${torrent}</${torrentType}></value></param>
     <param><value><string>d.directory.set=${torrentDirectory}</string></value></param>
+    ${downSequentialSet}
   </params>
 </methodCall>`,
     headers:      headers,
@@ -239,19 +242,21 @@ function postXmlRpcRequest(e, method, torrent, torrentDirectory, torrentType, on
     synchronous:  false,
     url:          rtorrentXmlRpcApi
   };
-
   if ((rtorrentHttpAuth["password"] !== "")
   &&  (rtorrentHttpAuth["username"] !== "")) {
     xhrParams["password"] = rtorrentHttpAuth["password"];
     xhrParams["user"] = rtorrentHttpAuth["username"];
   };
   logDebug("POSTing asynchronous " + method + " XML-RPC API request to " + xhrParams["url"]);
+  if (downSequential) {
+    logDebug("(Sequential download)");
+  };
   GM.xmlHttpRequest(xhrParams);
 };
 // }}}
 
-// {{{ function cbClickLink(e, torrentUrl, cbUrlHost, cb)
-function cbClickLink(e, torrentUrl, cbUrlHost, cb) {
+// {{{ function cbClickLink(e, downSequential, torrentUrl, cbUrlHost, cb)
+function cbClickLink(e, downSequential, torrentUrl, cbUrlHost, cb) {
   e.stopPropagation(); e.preventDefault();
   let torrentDownloadDir = "",
       torrentUrlHost = null;
@@ -264,7 +269,7 @@ function cbClickLink(e, torrentUrl, cbUrlHost, cb) {
   if ((torrentDownloadDir = matchHostDict(rtorrentDownloadDir, torrentUrlHost)) === null) {
     torrentDownloadDir = rtorrentDownloadDir[""];
   };
-  cb(e, torrentDownloadDir, torrentUrl, torrentUrlHost);
+  cb(e, downSequential, torrentDownloadDir, torrentUrl, torrentUrlHost);
 };
 // }}}
 // {{{ function cbClickLinkMagnet(e)
@@ -273,9 +278,9 @@ function cbClickLinkMagnet(e) {
     let torrentUrl = this.href;
 
     cbClickLink(
-      e, basename(torrentUrl),
+      e, e.altKey, basename(torrentUrl),
       function (torrentUrl_) { return torrentUrl; },
-      function (e, torrentDownloadDir, torrentUrl, torrentUrlHost) {
+      function (e, downSequential, torrentDownloadDir, torrentUrl, torrentUrlHost) {
         let torrentName = null;
         try { torrentName = decodeURI2(torrentUrl.match(/dn=([^&]+)/)[1]); }
         catch {
@@ -283,9 +288,10 @@ function cbClickLinkMagnet(e) {
         };
 
         let xhr = {"readyState": 4, "status": 200};
-        cbClickLinkResponse(e, e.target, torrentUrl, torrentDownloadDir,
-                            torrentName, torrentUrl, torrentUrlHost, xhr);
-      });
+        cbClickLinkResponse(e, downSequential, e.target, torrentUrl,
+                            torrentDownloadDir, torrentName, torrentUrl,
+                            torrentUrlHost, xhr);
+    });
   };
 };
 // }}}
@@ -293,30 +299,31 @@ function cbClickLinkMagnet(e) {
 function cbClickLinkTorrent(e) {
   if (!e.ctrlKey) {
     cbClickLink(
-      e, this.href,
+      e, e.altKey, this.href,
       function (torrentUrl) {
         return torrentUrl.match(new RegExp("^[^:]+://(?:[^:]+:[^@]+@)?([^/:]+)"))[1];
       },
-      function (e, torrentDownloadDir, torrentUrl, torrentUrlHost) {
+      function (e, downSequential, torrentDownloadDir, torrentUrl, torrentUrlHost) {
         let torrentName = basename(torrentUrl);
 
         setLinkState(e.target, 1, "Sending asynchronous GET request for " + torrentUrl + "...");
         GM.xmlHttpRequest({
           method:             "GET",
           onreadystatechange: function (xhr) {
-                                cbClickLinkResponse(e, e.target, xhr.response, torrentDownloadDir,
-                                                    torrentName, torrentUrl, torrentUrlHost, xhr);
+                                cbClickLinkResponse(e, downSequential, e.target, xhr.response,
+                                                    torrentDownloadDir, torrentName, torrentUrl,
+                                                    torrentUrlHost, xhr);
                               },
           responseType:       "arraybuffer",
           synchronous:        false,
           url:                torrentUrl
         });
-      });
+    });
   };
 };
 // }}}
-// {{{ function cbClickLinkResponse(e, link, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr)
-function cbClickLinkResponse(e, link, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr) {
+// {{{ function cbClickLinkResponse(e, downSequential, link, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr)
+function cbClickLinkResponse(e, downSequential, link, torrent, torrentDownloadDir, torrentName, torrentUrl, torrentUrlHost, xhr) {
   logDebug("Asynchronous GET request for " + torrentUrl + " readyState=" + xhr.readyState + " status=" + xhr.status);
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
@@ -332,7 +339,7 @@ function cbClickLinkResponse(e, link, torrent, torrentDownloadDir, torrentName, 
       };
 
       setLinkState(link, 3, "Received torrent data, sending " + method + " XML-RPC request...");
-      postXmlRpcRequest(e, method, torrentRaw, torrentDownloadDir, torrentType,
+      postXmlRpcRequest(e, downSequential, method, torrentRaw, torrentDownloadDir, torrentType,
                        function (error) { cbpostXmlRpcRequestResponse(e, error, e.target, torrentName); });
     } else {
       setLinkState(link, 2, "Asynchronous XML-RPC POST request for " + torrentUrl + " failed w/ status=" + xhr.status, false);
