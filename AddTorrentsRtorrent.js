@@ -8,7 +8,7 @@
 // @name          Add torrents to rtorrent via XML-RPC API
 // @namespace     https://greasyfork.org/users/467795
 // @supportURL    https://github.com/lalbornoz/AddTorrentsRtorrentTransmission
-// @version       1.2
+// @version       1.3
 // ==/UserScript==
 
 /*
@@ -96,6 +96,8 @@ function isMagnetLink(url) {
 // {{{ function isTorrentLink(url)
 function isTorrentLink(url) {
   if (url.match(/\.torrent(\?.*|)$/i)) {
+    return true;
+  } else if (url.match(/torrents\.php\?action=download/)) {
     return true;
   } else {
     return false;
