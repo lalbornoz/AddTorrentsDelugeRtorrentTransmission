@@ -1,0 +1,114 @@
+"
+" Neovim:
+" Set Neovim runtime and package paths, enable experimental Lua module loader
+" to slightly decrease startup time, and load all Neovim and Vim plugins w/
+" lazy.nvim, possibly lazily.
+"
+" Vim:
+" Load all Vim plugins w/ pathogen.vim.
+"
+if has('nvim')
+	set runtimepath^=~/.vim runtimepath+=~/.vim/after
+	let &packpath = &runtimepath
+
+	if has('nvim-0.9')
+		lua vim.loader.enable()
+	endif
+
+lua <<EOF
+	vim.opt.rtp:prepend("~/.vim/bundle.nvim/lazy.nvim")
+	local lazy = require("lazy")
+	local plugins = {}
+	lazy_plugins = {}
+
+	for _, fn in ipairs(vim.fn.glob("~/.vim/options.nvim.d/*.vim", 0, 1)) do
+		vim.cmd("source " .. fn)
+	end
+
+	for _, plugin in ipairs(vim.fn.glob("~/.vim/bundle.nvim/*", 0, 1)) do
+		if  (string.find(plugin, ".lazy$") == nil)
+		and (string.find(plugin, ".verylazy$") == nil)
+		then
+			local config_fn, init_fn = nil, nil
+			if vim.fn.getftype(plugin) == "link" then
+				plugin = vim.fn.resolve(plugin)
+			end
+
+			local plugin_name = string.gsub(plugin, "^.*/", "")
+			if lazy_plugins[plugin_name] ~= nil then
+				config_fn = lazy_plugins[plugin_name].config
+				init_fn = lazy_plugins[plugin_name].init
+			end
+
+			local lazy = false
+			if vim.fn.filereadable(plugin .. ".verylazy") > 0 then
+				event, lazy = "VeryLazy", true
+			elseif vim.fn.filereadable(plugin .. ".lazy") > 0 then
+				event, lazy = nil, true
+			end
+
+			table.insert(plugins, {
+				config=config_fn,
+				dir=plugin,
+				event=event,
+				init=init_fn,
+				lazy=lazy,
+			})
+		end
+	end
+
+	lazy.setup(plugins, {
+		root="~/.vim/bundle.nvim",
+	})
+EOF
+else
+	for f in glob("~/.vim/autoload.vim/*.vim", 0, 1)
+		if filereadable(f)
+			execute("source " . f)
+		endif
+	endfor | unlet f
+	execute pathogen#infect('bundle/{}')
+endif
+
+"
+" This is a special kind of option, because when it's set or reset, other
+" options are also changed as a side effect.  CAREFUL: Setting or resetting
+" this option can have a lot of unexpected effects: Mappings are interpreted
+" in another way, undo behaves differently, etc.  If you set this option in
+" your vimrc file, you should probably put it at the very start.
+" [ ... ]
+" When a |vimrc| or |gvimrc| file is found while Vim is starting up, this option
+" is switched off, and all options that have not been modified will be set to
+" the Vim defaults.  Effectively, this means that when a |vimrc| or |gvimrc|
+" file exists, Vim will use the Vim defaults, otherwise it will use the Vi
+" defaults.  (Note: This doesn't happen for the system-wide vimrc or gvimrc
+" file, nor for a file given with the |-u| argument).
+"
+set nocompatible
+filet on | filet plugin on|	" Enable file type detection, load plugin files
+filet plugin indent on|		" Enable loading indent file for specific file types
+
+"
+" Source set of run-command Vim files in order, local additions, and
+" post-initialisation finalisation additions, if any.
+"
+for f in
+	\ glob("~/.vim/options.defaults.d/*.vim", 0, 1) +
+	\ glob("~/.vim/options.d/*.vim", 0, 1) +
+	\ glob("~/.vim/commands.d/*.vim", 0, 1) +
+	\ glob("~/.vim/mappings.d/*.vim", 0, 1) +
+	\ glob("~/.vim/fini.d/*.vim", 0, 1) +
+	\ [expand("~/.vim/rc.local")]
+	\
+	if filereadable(f)
+		execute("source " . f)
+	endif
+endfor | unlet f
+
+"
+" Install commands and initialise lightline.
+"
+call roarie_commands#Install()
+call lightline#init()
+
+" vim:filetype=vim noexpandtab sw=8 ts=8 tw=0

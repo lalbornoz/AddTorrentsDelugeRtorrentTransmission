@@ -1,0 +1,141 @@
+[submodule "bundle/async.vim"]
+	path = bundle/async.vim
+	url = https://github.com/prabirshrestha/async.vim
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox/
+[submodule "bundle/lightline.vim"]
+	path = bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "bundle/LargeFile"]
+	path = bundle/LargeFile
+	url = https://github.com/lalbornoz/LargeFile
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "bundle/vim-lsp-settings"]
+	path = bundle/vim-lsp-settings
+	url = https://github.com/mattn/vim-lsp-settings
+[submodule "bundle/vim-man"]
+	path = bundle/vim-man
+	url = https://github.com/vim-utils/vim-man
+[submodule "bundle/vim-tmux-navigator"]
+	path = bundle/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "bundle/vim-quickui"]
+	path = bundle/vim-quickui
+	url = https://github.com/skywind3000/vim-quickui
+[submodule "bundle/vim-lsp"]
+	path = bundle/vim-lsp
+	url = https://github.com/lalbornoz/vim-lsp
+[submodule "bundle/vim-greppie"]
+	path = bundle/vim-greppie
+	url = https://github.com/lalbornoz/vim-greppie
+[submodule "bundle/vim-dispatch"]
+	path = bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
+[submodule "bundle.nvim/plenary.nvim"]
+	path = bundle.nvim/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "bundle.nvim/nvim-lspconfig"]
+	path = bundle.nvim/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "bundle.nvim/goto-preview"]
+	path = bundle.nvim/goto-preview
+	url = https://github.com/rmagatti/goto-preview
+[submodule "bundle.nvim/nvim-web-devicons"]
+	path = bundle.nvim/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons
+[submodule "bundle.nvim/telescope-menufacture"]
+	path = bundle.nvim/telescope-menufacture
+	url = https://github.com/lalbornoz/telescope-menufacture
+[submodule "bundle.nvim/nvim-terminal.lua"]
+	path = bundle.nvim/nvim-terminal.lua
+	url = https://github.com/norcalli/nvim-terminal.lua
+[submodule "bundle.nvim/mason.nvim"]
+	path = bundle.nvim/mason.nvim
+	url = https://github.com/williamboman/mason.nvim
+[submodule "bundle.nvim/rosetta.nvim"]
+	path = bundle.nvim/rosetta.nvim
+	url = https://github.com/lalbornoz/rosetta.nvim
+[submodule "bundle/hexmode"]
+	path = bundle/hexmode
+	url = https://github.com/fidian/hexmode
+[submodule "bundle.nvim/nvim-treesitter"]
+	path = bundle.nvim/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "bundle.nvim/gruvbox-baby"]
+	path = bundle.nvim/gruvbox-baby
+	url = https://github.com/luisiacc/gruvbox-baby
+[submodule "bundle.nvim/telescope.nvim"]
+	path = bundle.nvim/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim
+[submodule "bundle.nvim/workspaces.nvim"]
+	path = bundle.nvim/workspaces.nvim
+	url = https://github.com/natecraddock/workspaces.nvim
+[submodule "bundle.nvim/nvim-spectre"]
+	path = bundle.nvim/nvim-spectre
+	url = https://github.com/nvim-pack/nvim-spectre
+[submodule "bundle.nvim/telescope-emoji.nvim"]
+	path = bundle.nvim/telescope-emoji.nvim
+	url = https://github.com/xiyaowong/telescope-emoji.nvim
+[submodule "bundle.nvim/telescope-glyph.nvim"]
+	path = bundle.nvim/telescope-glyph.nvim
+	url = https://github.com/ghassan0/telescope-glyph.nvim
+[submodule "bundle.nvim/lazy.nvim"]
+	path = bundle.nvim/lazy.nvim
+	url = https://github.com/folke/lazy.nvim
+[submodule "bundle.nvim/aerial.nvim"]
+	path = bundle.nvim/aerial.nvim
+	url = https://github.com/stevearc/aerial.nvim
+[submodule "bundle.nvim/telescope-file-browser.nvim"]
+	path = bundle.nvim/telescope-file-browser.nvim
+	url = https://github.com/nvim-telescope/telescope-file-browser.nvim
+[submodule "bundle.nvim/roarie-telescope-menufacture-extra.nvim"]
+	path = bundle.nvim/roarie-telescope-menufacture-extra.nvim
+	url = https://github.com/lalbornoz/roarie-telescope-menufacture-extra.nvim
+[submodule "bundle/roarie-commands.vim"]
+	path = bundle/roarie-commands.vim
+	url = https://github.com/lalbornoz/roarie-commands.vim
+[submodule "bundle/roarie-startup.vim"]
+	path = bundle/roarie-startup.vim
+	url = https://github.com/lalbornoz/roarie-startup.vim
+[submodule "bundle.nvim/toggleterm.nvim"]
+	path = bundle.nvim/toggleterm.nvim
+	url = https://github.com/akinsho/toggleterm.nvim
+[submodule "bundle.nvim/nui.nvim"]
+	path = bundle.nvim/nui.nvim
+	url = https://github.com/MunifTanjim/nui.nvim
+[submodule "bundle.nvim/neo-tree.nvim"]
+	path = bundle.nvim/neo-tree.nvim
+	url = https://github.com/nvim-neo-tree/neo-tree.nvim
+[submodule "bundle.nvim/nvim-gdb"]
+	path = bundle.nvim/nvim-gdb
+	url = https://github.com/sakhnik/nvim-gdb
+[submodule "bundle.nvim/nvim-cmp"]
+	path = bundle.nvim/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
+[submodule "bundle.nvim/cmp-nvim-lsp"]
+	path = bundle.nvim/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule "bundle.nvim/cmp-buffer"]
+	path = bundle.nvim/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer
+[submodule "bundle.nvim/utf8.nvim"]
+	path = bundle.nvim/utf8.nvim
+	url = https://github.com/uga-rosa/utf8.nvim
+[submodule "bundle.nvim/heirline.nvim"]
+	path = bundle.nvim/heirline.nvim
+	url = https://github.com/rebelot/heirline.nvim
+[submodule "bundle.nvim/navigator.lua"]
+	path = bundle.nvim/navigator.lua
+	url = https://github.com/ray-x/navigator.lua
+[submodule "bundle/vim-rhubarb"]
+	path = bundle/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb
+[submodule "bundle.nvim/roarie-buildme"]
+	path = bundle.nvim/roarie-buildme
+	url = https://github.com/lalbornoz/roarie-buildme
