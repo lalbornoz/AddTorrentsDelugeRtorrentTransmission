@@ -90,7 +90,7 @@
 	url = https://github.com/folke/lazy.nvim
 [submodule "bundle.nvim/aerial.nvim"]
 	path = bundle.nvim/aerial.nvim
-	url = https://github.com/stevearc/aerial.nvim
+	url = https://github.com/lalbornoz/aerial.nvim
 [submodule "bundle.nvim/telescope-file-browser.nvim"]
 	path = bundle.nvim/telescope-file-browser.nvim
 	url = https://github.com/nvim-telescope/telescope-file-browser.nvim
