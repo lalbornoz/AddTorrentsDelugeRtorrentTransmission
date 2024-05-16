@@ -33,7 +33,8 @@ else
 call roarie_commands#AddMapping("&Project", "build", "&Build...", "Run make, open QuickFix window & redraw", "<silent>", '<F5>', ':<C-U>Make<CR>', "<fnalias>")
 endif
 if has('nvim')
-call roarie_commands#AddMapping("&Project", "gdb_submenu", "GD&B submenu...", "GD&B submenu...", "<silent>", '<M-F5>', ':<C-U>call roarie_commands#OpenSubMenu("gdb_submenu")<CR>', "<fnalias>", "")
+call roarie_commands#AddMapping("&Project", "gdb_start", "Start &debugging...", "Start debugging session", "<silent>", '<M-F5>', ':<C-U>GdbStart ./.gdbme.sh<CR>', "<fnalias>", "")
+call roarie_commands#AddMapping("&Project", "gdb_submenu", "G&DB submenu...", "GD&B submenu...", "<silent>", '<M-S-F5>', ':<C-U>call roarie_commands#OpenSubMenu("gdb_submenu")<CR>', "<fnalias>", "")
 call roarie_commands#AddSubMenu("gdb_submenu", "GDB submenu")
 call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_start", " ", "&Start debugging session", ":GdbStart ./.gdbme.sh")
 call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_start_lldb", " ", "&Start debugging session with LLDB", ":GdbStartLLDB lldb ./a.out")
@@ -50,7 +51,6 @@ call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_step_out", " ", "Step ou
 call roarie_commands#AddSubMenuItem("gdb_submenu", "", " ", "--", "")
 call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_frame_up", " ", "Navigate one frame &up", ":GdbFrameUp")
 call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_frame_down", " ", "Navigate one frame &down", ":GdbFrameDown")
-call roarie_commands#AddMapping("&Project", "gdb_continue", "Continue in GD&B", "Continue execution in GD&B", "<silent>", '<M-S-F5>', ':<C-U>GdbContinue<CR>', "<fnalias>", "")
 call roarie_commands#AddMapping("&Project", "gdb_step_into", "Step into st&atement", "Step into st&atement in GD&B", "<silent>", '<M-PageUp>', ':<C-U>GdbStep<CR>', "", "")
 call roarie_commands#AddMapping("&Project", "gdb_step_over", "Step over st&atement", "Step over st&atement in GD&B", "<silent>", '<M-PageDown>', ':<C-U>GdbNext<CR>', "", "")
 call roarie_commands#AddMapping("&Project", "gdb_frame_up", "&Frame up in GD&B", "Navigate one frame up in GD&B", "<silent>", '<M-S-PageUp>', ':<C-U>GdbFrameUp<CR>', "", "")
