@@ -76,9 +76,11 @@
 [submodule "bundle.nvim/workspaces.nvim"]
 	path = bundle.nvim/workspaces.nvim
 	url = https://github.com/natecraddock/workspaces.nvim
+	ignore = dirty
 [submodule "bundle.nvim/nvim-spectre"]
 	path = bundle.nvim/nvim-spectre
 	url = https://github.com/nvim-pack/nvim-spectre
+	ignore = dirty
 [submodule "bundle.nvim/telescope-emoji.nvim"]
 	path = bundle.nvim/telescope-emoji.nvim
 	url = https://github.com/xiyaowong/telescope-emoji.nvim
@@ -106,6 +108,7 @@
 [submodule "bundle.nvim/toggleterm.nvim"]
 	path = bundle.nvim/toggleterm.nvim
 	url = https://github.com/akinsho/toggleterm.nvim
+	ignore = dirty
 [submodule "bundle.nvim/nui.nvim"]
 	path = bundle.nvim/nui.nvim
 	url = https://github.com/MunifTanjim/nui.nvim
@@ -127,12 +130,14 @@
 [submodule "bundle.nvim/utf8.nvim"]
 	path = bundle.nvim/utf8.nvim
 	url = https://github.com/uga-rosa/utf8.nvim
+	ignore = dirty
 [submodule "bundle.nvim/heirline.nvim"]
 	path = bundle.nvim/heirline.nvim
 	url = https://github.com/rebelot/heirline.nvim
 [submodule "bundle.nvim/navigator.lua"]
 	path = bundle.nvim/navigator.lua
 	url = https://github.com/ray-x/navigator.lua
+	ignore = dirty
 [submodule "bundle/vim-rhubarb"]
 	path = bundle/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
