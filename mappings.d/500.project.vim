@@ -35,7 +35,7 @@ endif
 if has('nvim')
 call roarie_commands#AddMapping("&Project", "gdb_submenu", "GD&B submenu...", "GD&B submenu...", "<silent>", '<M-F5>', ':<C-U>call roarie_commands#OpenSubMenu("gdb_submenu")<CR>', "<fnalias>", "")
 call roarie_commands#AddSubMenu("gdb_submenu", "GDB submenu")
-call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_start", " ", "&Start debugging session", ":GdbStart gdb -q ./a.out")
+call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_start", " ", "&Start debugging session", ":GdbStart ./.gdbme.sh")
 call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_start_lldb", " ", "&Start debugging session with LLDB", ":GdbStartLLDB lldb ./a.out")
 call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_start_python", " ", "Start &Python debugging session", ":GdbStartPDB python -m pdb main.py")
 call roarie_commands#AddSubMenuItem("gdb_submenu", "gdb_start_bash", " ", "Start BAS&H debugging session", ":GdbStartBashDB bashdb main.sh")
