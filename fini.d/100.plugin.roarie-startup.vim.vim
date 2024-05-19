@@ -55,7 +55,7 @@ let g:roarie_startup_screen_lines = [
 	\ '[ﯼ  Toggle symbols sidebar    <C-F3>]     [36;46m [0m',
 	\ ']󰋖  Display manual page...    <C-F4>[    [36;46m   [0m',
 	\ '[  Build...                    <F5>]   [36;46m     [0m',
-	\ ']  GDB submenu...          <M-S-F5>[  [36;46m [93;103m [30m/[93;103m  [0m',
+	\ ']  Debugger submenu...     <M-S-F5>[  [36;46m [93;103m [30m/[93;103m  [0m',
 	\ '[  Git status                  <F6>] [36;46m [93;103m [30m_[30;40m_[30;103m_[30;40m_[30;103m_[0m',
 	\ ']  Create new window           <F7>[[36;46m   [93;103m    [0m',
 	\ '[󰓩  Open a new tab page         <F8>][36;46m    [93;103m  [0m [93;103m [0m',
