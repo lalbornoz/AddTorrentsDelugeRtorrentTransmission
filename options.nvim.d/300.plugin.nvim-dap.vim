@@ -86,33 +86,6 @@ config = function()
 	-- }}}
 
 	dap.configurations.c = dap.configurations.cpp
-
-	dap.roarie = {}
-
-	dap.roarie.sidebars = {
-		expression={sidebar=nil, winopts={width=25}, wincmd="vsplit"},
-		frames={sidebar=nil, winopts={height=8}, wincmd="belowright split"},
-		scopes={sidebar=nil, winopts={width=25}, wincmd="vsplit"},
-		sessions={sidebar=nil, winopts={height=8}, wincmd="belowright split"},
-		threads={sidebar=nil, winopts={height=8}, wincmd="belowright split"},
-	}
-
-	dap.roarie.toggle = function(kind, winopts, wincmd)
-  		local widgets = require("dap.ui.widgets")
-		if dap.roarie.sidebars[kind].sidebar == nil then
-			dap.roarie.sidebars[kind].sidebar =
-				widgets.sidebar(
-					widgets[kind],
-					winopts or dap.roarie.sidebars[kind].winopts,
-					wincmd or dap.roarie.sidebars[kind].wincmd)
-		end
-		dap.roarie.sidebars[kind].sidebar.toggle()
-	end
-
-	dap.roarie.toggle_default = function()
-		dap.roarie.toggle("frames")
-		dap.roarie.toggle("scopes")
-	end
 end }
 EOF
 

@@ -144,3 +144,12 @@
 [submodule "bundle.nvim/nvim-dap"]
 	path = bundle.nvim/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap
+[submodule "bundle.nvim/nvim-dap-ui"]
+	path = bundle.nvim/nvim-dap-ui
+	url = https://github.com/rcarriga/nvim-dap-ui
+[submodule "bundle.nvim/nvim-nio"]
+	path = bundle.nvim/nvim-nio
+	url = https://github.com/nvim-neotest/nvim-nio
+[submodule "bundle.nvim/neodev.nvim"]
+	path = bundle.nvim/neodev.nvim
+	url = https://github.com/folke/neodev.nvim
