@@ -16,41 +16,11 @@ config = function()
 	-- {{{ dap.configurations.cpp = {}
 	dap.configurations.cpp = {
 		{
-			cwd		= '${workspaceFolder}',
-			name		= "Launch file",
-			request		= "launch",
-			stopAtEntry	= true,
-			type		= "cppdbg",
-			program		=
-			function()
-				local program = nil
-
-				if vim.fn.exists(".gdbme.sh") then
-					local obj_program = vim.system(
-						{"/bin/sh", ".gdbme.sh", "--print-program"},
-						{text=true}):wait()
-
-					if obj_program.code == 0 then
-						program = obj_program.stdout
-					end
-				end
-
-				if program == nil then
-					program = vim.fn.input(
-						"Path to executable: ",
-						vim.fn.getcwd() .. "/", "file")
-				end
-
-				return program
-			end,
-		},
-
-		{
 			cwd			= '${workspaceFolder}',
 			miDebuggerPath		= "/usr/bin/gdb",
 			miDebuggerServerAddress	= "localhost:1234",
 			MIMode			= "gdb",
-			name			= "Attach to gdbserver :1234",
+			name			= "Debug via .gdbme.sh",
 			request			= "launch",
 			type			= "cppdbg",
 			program			=
