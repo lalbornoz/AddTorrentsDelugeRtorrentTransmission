@@ -56,6 +56,16 @@ config = function()
 	-- }}}
 
 	dap.configurations.c = dap.configurations.cpp
+
+	dap.roarie = {}
+	dap.roarie.continue = function()
+		if dap.status() == "" then
+			dap.continue()
+			require("dapui").open()
+		else
+			dap.continue()
+		end
+	end
 end }
 EOF
 
