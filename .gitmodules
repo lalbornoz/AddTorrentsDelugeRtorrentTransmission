@@ -115,9 +115,6 @@
 [submodule "bundle.nvim/neo-tree.nvim"]
 	path = bundle.nvim/neo-tree.nvim
 	url = https://github.com/nvim-neo-tree/neo-tree.nvim
-[submodule "bundle.nvim/nvim-gdb"]
-	path = bundle.nvim/nvim-gdb
-	url = https://github.com/sakhnik/nvim-gdb
 [submodule "bundle.nvim/nvim-cmp"]
 	path = bundle.nvim/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp
@@ -144,3 +141,6 @@
 [submodule "bundle.nvim/roarie-buildme"]
 	path = bundle.nvim/roarie-buildme
 	url = https://github.com/lalbornoz/roarie-buildme
+[submodule "bundle.nvim/nvim-dap"]
+	path = bundle.nvim/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap
