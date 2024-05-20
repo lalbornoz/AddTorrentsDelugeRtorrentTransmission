@@ -19,7 +19,7 @@ call roarie_commands#AddMapping("&Document", "goto_decl", "Go to de&claration", 
 endif
 call roarie_commands#AddSeparator("&Document")
 if has('nvim')
-call roarie_commands#AddMapping("&Document", "document_symbols", "Document &symbols picker...", "Telescope document_symbols/aerial...", "<silent>", '<F3>', ':<C-U>lua if (table.getn(vim.lsp.get_clients({bufnr=vim.api.nvim_get_current_buf()})) == 0) then require("telescope").extensions.aerial.aerial() else require("telescope.builtin").lsp_document_symbols() end<CR>', "<fnalias>", "󱔁")
+call roarie_commands#AddMapping("&Document", "document_symbols", "Document &symbols picker...", "Telescope document_symbols/aerial...", "<silent>", '<F3>', ':<C-U>lua if (table.getn(vim.lsp.get_clients({bufnr=vim.api.nvim_get_current_buf()})) == 0) then require("telescope").extensions.aerial.aerial() else require("telescope.builtin").lsp_document_symbols({symbol_width=35}) end<CR>', "<fnalias>", "󱔁")
 call roarie_commands#AddMapping("&Document", "workspace_symbols", "Workspace &symbols picker...", "Telescope lsp_dynamic_workspace_symbols...", "<silent>", '<S-F3>', '<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>', "<fnalias>", "")
 call roarie_commands#AddMapping("&Document", "toggle_symbols_sidebar", "Toggle &symbols sidebar", "Toggle Aerial sidebar", "<silent>", '<C-F3>', ':<C-U>AerialToggle left<CR>', "<fnalias>", "ﯼ")
 call roarie_commands#AddMapping("&Document", "toggle_symbols_float", "Toggle &symbols window", "Toggle Aerial nav window", "<silent>", '<C-S-F3>', ':<C-U>AerialNavToggle<CR>', "<fnalias>", "")
