@@ -38,7 +38,7 @@ call roarie_commands#AddMapping("&Project", "dap_submenu", "&Debugger submenu...
 call roarie_commands#AddSubMenu("dap_submenu", "Debugger submenu")
 call roarie_commands#AddSubMenuItem("dap_submenu", "dap_start", " ", "&Start/continue debugging...", ':lua require("dap").roarie.continue()')
 call roarie_commands#AddSubMenuItem("dap_submenu", "dap_restart", " ", "R&estart debugging", ':lua require("dap").restart()')
-call roarie_commands#AddSubMenuItem("dap_submenu", "dap_terminate", " ", "&Stop debugging", ':lua require("dap").terminate()')
+call roarie_commands#AddSubMenuItem("dap_submenu", "dap_terminate", " ", "&Stop debugging", ':lua require("dap").roarie.terminate()')
 call roarie_commands#AddSubMenuItem("dap_submenu", "", " ", "--", "")
 call roarie_commands#AddSubMenuItem("dap_submenu", "dap_toggle_repl", " ", "Toggle DAP &REPL window...", ":DapToggleRepl")
 call roarie_commands#AddSubMenuItem("dap_submenu", "dap_toggle_sidebars", " ", "Toggle DAP sideb&ars", ':lua require("dapui").toggle()')

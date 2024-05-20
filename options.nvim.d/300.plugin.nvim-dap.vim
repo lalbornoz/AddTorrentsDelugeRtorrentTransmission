@@ -58,13 +58,19 @@ config = function()
 	dap.configurations.c = dap.configurations.cpp
 
 	dap.roarie = {}
+
 	dap.roarie.continue = function()
-		if dap.status() == "" then
+		if dap.session() == nil then
 			dap.continue()
 			require("dapui").open()
 		else
 			dap.continue()
 		end
+	end
+
+	dap.roarie.terminate = function()
+		dap.terminate()
+		require("dapui").close()
 	end
 end }
 EOF
