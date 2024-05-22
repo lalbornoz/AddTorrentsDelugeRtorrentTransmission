@@ -23,6 +23,7 @@ config = function()
 			name			= "Debug via .gdbme.sh",
 			request			= "launch",
 			type			= "cppdbg",
+
 			program			=
 			function()
 				local program = nil
@@ -51,6 +52,14 @@ config = function()
 
 				return program
 			end,
+
+			-- <https://github.com/microsoft/vscode-cpptools/issues/6754>
+			sourceFileMap		= {
+				['${workspaceFolder}'] = {
+					editorPath		= '${workspaceFolder}',
+					useForBreakpoints	= true,
+				},
+			},
 		},
 	}
 	-- }}}
