@@ -153,3 +153,6 @@
 [submodule "bundle.nvim/neodev.nvim"]
 	path = bundle.nvim/neodev.nvim
 	url = https://github.com/folke/neodev.nvim
+[submodule "bundle.nvim/telescope-ui-select.nvim"]
+	path = bundle.nvim/telescope-ui-select.nvim
+	url = https://github.com/nvim-telescope/telescope-ui-select.nvim

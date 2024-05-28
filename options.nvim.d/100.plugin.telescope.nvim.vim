@@ -139,6 +139,12 @@ config = function()
 		},
 		-- }}}
 		extensions = {
+			-- {{{ extensions["ui-select"] = {}
+			["ui-select"] = {
+				require("telescope.themes").get_dropdown {
+				},
+			},
+			-- }}}
 			-- {{{ extensions.menufacture = {}
 			menufacture = {
 				max_depth_initial = 4,
