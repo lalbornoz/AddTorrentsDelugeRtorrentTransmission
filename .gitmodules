@@ -156,3 +156,6 @@
 [submodule "bundle.nvim/telescope-ui-select.nvim"]
 	path = bundle.nvim/telescope-ui-select.nvim
 	url = https://github.com/nvim-telescope/telescope-ui-select.nvim
+[submodule "bundle.nvim/trouble.nvim"]
+	path = bundle.nvim/trouble.nvim
+	url = https://github.com/folke/trouble.nvim
