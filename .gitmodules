@@ -159,3 +159,6 @@
 [submodule "bundle.nvim/trouble.nvim"]
 	path = bundle.nvim/trouble.nvim
 	url = https://github.com/folke/trouble.nvim
+[submodule "bundle.nvim/multicursor.nvim"]
+	path = bundle.nvim/multicursor.nvim
+	url = https://github.com/jake-stewart/multicursor.nvim
