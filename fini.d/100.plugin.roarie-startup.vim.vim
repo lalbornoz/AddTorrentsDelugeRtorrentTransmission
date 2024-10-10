@@ -60,7 +60,7 @@ let g:roarie_startup_screen_lines = [
 	\ ']  Create new window           <F7>[[36;46m   [93;103m    [0m',
 	\ '[󰓩  Open a new tab page         <F8>][36;46m    [93;103m  [0m [93;103m [0m',
 	\ ']  Close current window/tab  <S-F8>[[36;46m   [94;44m    [93;103m [0m',
-	\ '[  Live grep picker..   .     <F10>] [36;46m [30;40m [94;44m [97mKA[94m [0m',
+	\ '[  Live grep picker...        <F10>] [36;46m [30;40m [94;44m [97mKA[94m [0m',
 	\ ']  Open terminal              <F11>[   [94;44m [97mDE[94m [0m',
 	\ '[  Toggle file tree sidebar   <F12>]   [94;44m   [93;103m  [0m',
 	\ ']  Files picker...          <C-F12>[   [90;100m     [30;40m [0m',
