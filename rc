@@ -108,7 +108,9 @@ endfor | unlet f
 "
 " Forcibly disable obnoxiously useless deprecation warnings on Neovim.
 "
+if has('nvim')
 lua vim.deprecate = function() end
+endif
 
 "
 " Install commands and initialise lightline.
