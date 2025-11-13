@@ -7,6 +7,15 @@
 " Vim:
 " Load all Vim plugins w/ pathogen.vim.
 "
+
+for f in
+	\ glob("~/.vim/options.bundle.d/*.vim", 0, 1)
+	\
+	if filereadable(f)
+		execute("source " . f)
+	endif
+endfor | unlet f
+
 if has('nvim')
 	set runtimepath^=~/.vim runtimepath+=~/.vim/after
 	let &packpath = &runtimepath
@@ -21,7 +30,7 @@ lua <<EOF
 	local plugins = {}
 	lazy_plugins = {}
 
-	for _, fn in ipairs(vim.fn.glob("~/.vim/options.nvim.d/*.vim", 0, 1)) do
+	for _, fn in ipairs(vim.fn.glob("~/.vim/options.bundle.nvim.d/*.vim", 0, 1)) do
 		vim.cmd("source " .. fn)
 	end
 
@@ -93,8 +102,8 @@ filet plugin indent on|		" Enable loading indent file for specific file types
 " post-initialisation finalisation additions, if any.
 "
 for f in
-	\ glob("~/.vim/options.defaults.d/*.vim", 0, 1) +
-	\ glob("~/.vim/options.d/*.vim", 0, 1) +
+	\ glob("~/.vim/options.vim.d/*.vim", 0, 1) +
+	\ glob("~/.vim/options.bundle-post.d/*.vim", 0, 1) +
 	\ glob("~/.vim/commands.d/*.vim", 0, 1) +
 	\ glob("~/.vim/mappings.d/*.vim", 0, 1) +
 	\ glob("~/.vim/fini.d/*.vim", 0, 1) +
