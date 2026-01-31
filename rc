@@ -106,7 +106,7 @@ for f in
 	\ glob("~/.vim/options.bundle-post.d/*.vim", 0, 1) +
 	\ glob("~/.vim/commands.d/*.vim", 0, 1) +
 	\ glob("~/.vim/mappings.d/*.vim", 0, 1) +
-	\ glob("~/.vim/fini.d/*.vim", 0, 1) +
+	\ glob("~/.vim/options.fini.d/*.vim", 0, 1) +
 	\ [expand("~/.vim/rc.local")]
 	\
 	if filereadable(f)
