@@ -96,9 +96,6 @@
 [submodule "bundle.nvim/telescope-file-browser.nvim"]
 	path = bundle.nvim/telescope-file-browser.nvim
 	url = https://github.com/nvim-telescope/telescope-file-browser.nvim
-[submodule "bundle.nvim/roarie-telescope-menufacture-extra.nvim"]
-	path = bundle.nvim/roarie-telescope-menufacture-extra.nvim
-	url = https://github.com/lalbornoz/roarie-telescope-menufacture-extra.nvim
 [submodule "bundle/roarie-commands.vim"]
 	path = bundle/roarie-commands.vim
 	url = https://github.com/lalbornoz/roarie-commands.vim
@@ -138,9 +135,6 @@
 [submodule "bundle/vim-rhubarb"]
 	path = bundle/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
-[submodule "bundle.nvim/roarie-buildme"]
-	path = bundle.nvim/roarie-buildme
-	url = https://github.com/lalbornoz/roarie-buildme
 [submodule "bundle.nvim/nvim-dap"]
 	path = bundle.nvim/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap
