@@ -1,9 +1,4 @@
 "
-" Neovim:
-" Set Neovim runtime and package paths, enable experimental Lua module loader
-" to slightly decrease startup time, and load all Neovim and Vim plugins w/
-" lazy.nvim, possibly lazily.
-"
 " Vim:
 " Load all Vim plugins w/ pathogen.vim.
 "
@@ -16,68 +11,12 @@ for f in
 	endif
 endfor | unlet f
 
-if has('nvim')
-	set runtimepath^=~/.vim runtimepath+=~/.vim/after
-	let &packpath = &runtimepath
-
-	if has('nvim-0.9')
-		lua vim.loader.enable()
+for f in glob("~/.vim/autoload.vim/*.vim", 0, 1)
+	if filereadable(f)
+		execute("source " . f)
 	endif
-
-lua <<EOF
-	vim.opt.rtp:prepend("~/.vim/bundle.nvim/lazy.nvim")
-	local lazy = require("lazy")
-	local plugins = {}
-	lazy_plugins = {}
-
-	for _, fn in ipairs(vim.fn.glob("~/.vim/options.bundle.nvim.d/*.vim", 0, 1)) do
-		vim.cmd("source " .. fn)
-	end
-
-	for _, plugin in ipairs(vim.fn.glob("~/.vim/bundle.nvim/*", 0, 1)) do
-		if  (string.find(plugin, ".lazy$") == nil)
-		and (string.find(plugin, ".verylazy$") == nil)
-		then
-			local config_fn, init_fn = nil, nil
-			if vim.fn.getftype(plugin) == "link" then
-				plugin = vim.fn.resolve(plugin)
-			end
-
-			local plugin_name = string.gsub(plugin, "^.*/", "")
-			if lazy_plugins[plugin_name] ~= nil then
-				config_fn = lazy_plugins[plugin_name].config
-				init_fn = lazy_plugins[plugin_name].init
-			end
-
-			local lazy = false
-			if vim.fn.filereadable(plugin .. ".verylazy") > 0 then
-				event, lazy = "VeryLazy", true
-			elseif vim.fn.filereadable(plugin .. ".lazy") > 0 then
-				event, lazy = nil, true
-			end
-
-			table.insert(plugins, {
-				config=config_fn,
-				dir=plugin,
-				event=event,
-				init=init_fn,
-				lazy=lazy,
-			})
-		end
-	end
-
-	lazy.setup(plugins, {
-		root="~/.vim/bundle.nvim",
-	})
-EOF
-else
-	for f in glob("~/.vim/autoload.vim/*.vim", 0, 1)
-		if filereadable(f)
-			execute("source " . f)
-		endif
-	endfor | unlet f
-	execute pathogen#infect('bundle/{}')
-endif
+endfor | unlet f
+execute pathogen#infect('bundle/{}')
 
 "
 " This is a special kind of option, because when it's set or reset, other
@@ -113,13 +52,6 @@ for f in
 		execute("source " . f)
 	endif
 endfor | unlet f
-
-"
-" Forcibly disable obnoxiously useless deprecation warnings on Neovim.
-"
-if has('nvim')
-lua vim.deprecate = function() end
-endif
 
 "
 " Install commands and initialise lightline.

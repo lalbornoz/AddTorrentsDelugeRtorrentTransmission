@@ -2,7 +2,7 @@
 " [Mappings] Legacy non-GUI Vim key aliases (assuming XTerm-compatible terminal)
 "
 
-if !has('nvim') && !has('gui_running')
+if !has('gui_running')
 
 " {{{ <https://github.com/vim/vim/issues/9009>
 " Enable modified arrow keys, see  :help xterm-modifier-keys

@@ -11,12 +11,6 @@ call roarie_commands#AddMapping("<&Alt>", "insert_date", "Insert &date (LC_ALL=C
 call roarie_commands#AddMapping("<&Alt>", "insert_date_rfc2822", "Insert &date (RFC 2822/2322)", "Insert date in RFC 2822/5322 format", "<silent>", '<M-D>', ':<C-U>:r!env LC_ALL=C date +"\%a, \%d \%b \%Y \%T \%z"<CR>', "", "")
 call roarie_commands#AddMapping("<&Alt>", "convert_to_prototype", "Convert to &prototype", "Convert to prototype", '<silent>', '<M-p>', 'J<Esc>:s/\t/ /eg<CR>:s/ \+/ /eg<CR>:s/( /(/<CR>:s/ \* / */eg<CR>:s/$/;/<CR>', "", "")
 call roarie_commands#AddMapping("<&Alt>", "edit_vimrc", "Edit &Vim configuration...", "Edit Vim configuration file in new window", "<silent>", '<M-v>', ':<C-U>tabnew\|e ~/.vimrc<CR>', "", "")
-if has('nvim')
-call roarie_commands#AddSeparator("<&Alt>")
-call roarie_commands#AddMapping("<&Alt>", "telescope_emoji", "&Emoji picker...", "Telescope emoji...", '<silent>', '<M-e>', ':<C-U>Telescope emoji<CR>', "", "ﲃ")
-call roarie_commands#AddMapping("<&Alt>", "telescope_glyph", "&Glyph picker...", "Telescope glyph...", '<silent>', '<M-g>', ':<C-U>Telescope glyph<CR>', "", "")
-call roarie_commands#AddMapping("<&Alt>", "telescope_help", "&Help tags picker...", "Telescope help_tags...", '<silent>', '<M-/>', ':<C-U>Telescope help_tags<CR>', "", "ﲉ")
-endif
 call roarie_commands#AddSeparator("<&Alt>")
 call roarie_commands#AddMapping("<&Alt>", "toggle_foldmethod", "Toggle f&oldmethod", "Toggle between foldmethod=marker and foldmethod=indent", '<silent>', '<M-f>', ':<C-U>ToggleFoldMethod<CR>', "", "")
 call roarie_commands#AddMapping("<&Alt>", "toggle_hlsearch", "Toggle &search match highlighting", "Toggle search match highlighting", '<silent>', '<M-h>', ':<C-U>set invhlsearch<CR>', "", "")
@@ -26,14 +20,7 @@ call roarie_commands#AddMapping("<&Alt>", "set_filetype_terminal", "Set filetype
 call roarie_commands#AddMapping("<&Alt>", "toggle_wrap", "Toggle &line-wrap", "Toggle wrapping of lines longer than window width", "<silent>", '<M-w>', ':<C-U>set invwrap<CR>', "", "")
 call roarie_commands#AddMapping("<&Alt>", "set_tw0", "Set t&w=0", "Set textwidth to 0", "<silent>", '<M-W>', ':<C-U>set tw=0<CR>', "", "")
 call roarie_commands#AddMapping("<&Alt>", "reset_folds", "&Reset folding", "Reset folding", '<silent>', '<M-x>', ':<C-U>set foldmethod=marker<CR>', "", "ﱱ")
-if has('nvim')
-call roarie_commands#AddMapping("<&Alt>", "toggle_hexedit", "Toggle he&x editing", "Toggle hex editing", '<silent>', '<M-X>', ':<C-U>Hexmode<CR>', "", "")
-endif
 call roarie_commands#AddMapping("<&Alt>", "reset_syntax", "Reset s&yntax highlighting", "Reset syntax highlighting", '<silent>', '<M-y>', ':<C-U>syntax on<CR>', "", "")
-if has('nvim')
-call roarie_commands#AddMapping("<&Alt>", "helptags", "Regenerate help t&ags", "Regenerate all help tags", '<silent>', '<M-z>', ':<C-U>helptags ALL<CR>', "", "")
-else
 call roarie_commands#AddMapping("<&Alt>", "helptags", "Regenerate help t&ags", "Regenerate all help tags", '<silent>', '<M-z>', ':<C-U>Helptags<CR>')
-endif
 
 " vim:filetype=vim noexpandtab sw=8 ts=8 tw=0

@@ -14,18 +14,11 @@ call roarie_commands#AddMapping("&Tabs", "tab_goto8", "&Go to tab #8", '', '<sil
 call roarie_commands#AddMapping("&Tabs", "tab_goto9", "&Go to tab #9", '', '<silent>', '<M-9>', '9gt', "", "")
 call roarie_commands#AddSeparator("&Tabs")
 call roarie_commands#AddMapping("&Tabs", "tab_goto_prev", "Go to &previous tab", "Go to previous tab page w/ wraparound", "<silent>", '<M-S-Left>', ':<C-U>tabprev<CR>', "", "﮿")
-if has('nvim')
-call roarie_commands#AddTMapping("&Tabs", "tab_goto_prev_terminal", "Go to &previous tab (terminal)", "Go to previous tab page w/ wraparound (terminal job mode)", "<silent>", '<M-S-Left>', '<C-\><C-n>:tabprev<CR>', "", "﮿")
-endif
 call roarie_commands#AddMapping("&Tabs", "tab_goto_next", "Go to &next tab", "Go to next tab page w/ wraparound", "<silent>", '<M-S-Right>', ':<C-U>tabnext<CR>', "", "﯀")
-if has('nvim')
-call roarie_commands#AddTMapping("&Tabs", "tab_goto_next_terminal", "Go to &next tab (terminal)", "Go to next tab page w/ wraparound (terminal job mode)", "<silent>", '<M-S-Right>', '<C-\><C-n>:tabnext<CR>', "", "﯀")
-else
 call roarie_commands#AddTMapping("&Tabs", "tab_goto_prev_terminal", "Go to &previous tab (terminal)", "Go to previous tab page w/ wraparound (terminal job mode)", "<silent>", '<C-f>', '<C-T>:tabprev<CR>')
 call roarie_commands#AddTMapping("&Tabs", "tab_goto_prev_terminal", "Go to &previous tab (terminal)", "Go to previous tab page w/ wraparound (terminal job mode)", "<silent>", '<M-S-Left>', '<C-T>:tabprev<CR>')
 call roarie_commands#AddTMapping("&Tabs", "tab_goto_next_terminal", "Go to &next tab (terminal)", "Go to next tab page w/ wraparound (terminal job mode)", "<silent>", '<C-h>', '<C-T>:tabnext<CR>')
 call roarie_commands#AddTMapping("&Tabs", "tab_goto_next_terminal", "Go to &next tab (terminal)", "Go to next tab page w/ wraparound (terminal job mode)", "<silent>", '<M-S-Right>', '<C-T>:tabnext<CR>')
-endif
 call roarie_commands#AddSeparator("&Tabs")
 call roarie_commands#AddMapping("&Tabs", "open_new_tab", "&Open a new tab page", "Open a new tab page", "<silent>", '<F8>', ':<C-U>tabnew<CR>', "<fnalias>", "ﱚ")
 call roarie_commands#AddMapping("&Tabs", "close_current_tab", "&Close current tab", "Close current tab", "<silent>", '<S-F8>', ':<C-U>close<CR>', "<fnalias>", "")

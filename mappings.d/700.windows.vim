@@ -21,12 +21,5 @@ call roarie_commands#AddMapping("&Windows", "move_window_below", "Move to tmux o
 call roarie_commands#AddMapping("&Windows", "move_window_below", "Move to tmux or Vim window &below", "Move to 1st tmux pane or Vim window below current", "<silent>", '<C-j>', ':<C-U>TmuxNavigateDown<CR>', "", "ﲐ")
 call roarie_commands#AddMapping("&Windows", "move_window_left", "Move to window to &left", "Move to 1st window left of current", "<silent>", '<M-Left>', ':<C-U>wincmd h<CR>', "", "ﲑ")
 call roarie_commands#AddMapping("&Windows", "move_window_right", "Move to window to &right", "Move to 1st window right of current", "<silent>", '<M-Right>', ':<C-U>wincmd l<CR>', "", "ﲒ")
-if has('nvim')
-call roarie_commands#AddSeparator("&Windows")
-call roarie_commands#AddTMapping("&Windows", "move_window_above_terminal", "Move to tmux or Vim window &above (terminal)", "Move to 1st tmux pane or Vim window above current (terminal job mode)", "<silent>", '<M-Up>', '<C-\><C-n>:TmuxNavigateUp<CR>', "", "ﲓ")
-call roarie_commands#AddTMapping("&Windows", "move_window_above_terminal", "Move to tmux or Vim window &above (terminal)", "Move to 1st tmux pane or Vim window above current (terminal job mode)", "<silent>", '<C-k>', '<C-\><C-n>:TmuxNavigateUp<CR>', "", "ﲐ")
-call roarie_commands#AddTMapping("&Windows", "move_window_below_terminal", "Move to tmux or Vim window &below (terminal)", "Move to 1st tmux pane or Vim window below current (terminal job mode)", "<silent>", '<M-Down>', '<C-\><C-n>:TmuxNavigateDown<CR>', "", "ﲐ")
-call roarie_commands#AddTMapping("&Windows", "move_window_below_terminal", "Move to tmux or Vim window &below (terminal)", "Move to 1st tmux pane or Vim window below current (terminal job mode)", "<silent>", '<C-j>', '<C-\><C-n>:TmuxNavigateDown<CR>', "", "ﲐ")
-endif
 
 " vim:filetype=vim noexpandtab sw=8 ts=8 tw=0
