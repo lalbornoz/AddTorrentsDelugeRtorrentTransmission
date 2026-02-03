@@ -15,6 +15,7 @@ set nobackup nowritebackup	" Don't write backups for existing files
 set nohidden			" Abandon buffer when unloaded
 set noundofile			" Do not automatically saves undo history
 set t_Co=256			" Force 256 colour terminal
+set tabpagemax=15		" Maximum of 15 tab pages
 set termwinkey=<C-T>		" Set key starts a command in a terminal window to CTRL-T
 set timeout timeoutlen=100	" Decrease escape sequences latency
 set viminfo=""			" Neither read nor write /viminfo/ file
