@@ -43,7 +43,7 @@ let g:roarie_startup_screen_lines = [
 	\ '[  Create new window           <F7>]',
 	\ ']󰓩  Open a new tab page         <F8>[',
 	\ '[  Close current window/tab  <S-F8>]',
-	\ ']  Grep...                    <F10>[',
+	\ ']  Search in files...         <F10>[',
 	\ '[  Open terminal              <F11>]',
 	\ ']  Toggle file tree sidebar   <F12>[',
 	\ ]

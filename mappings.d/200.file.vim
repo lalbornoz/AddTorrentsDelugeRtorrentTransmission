@@ -4,7 +4,10 @@
 
 call roarie_commands#AddMenu("&File")
 call roarie_commands#AddMapping("&File", "open_menu", "Open &menu...", "Open menu...", '<silent>', '<M-m>', ':<C-U>call roarie_commands#OpenMenu()<CR>', "", "󰍜")
-call roarie_commands#AddMapping("&File", "command_palette", "Command &palette...", "Command palette", '<silent>', '<C-p>', ':<C-U>Telescope roarie_palette<CR>', "", "󰘳")
+call roarie_commands#AddSeparator("&File")
+call roarie_commands#AddMapping("&File", "search_files_rg", "&Search in files...", "Search in files with fzf and ripgrep...", '', '<F10>', ':<C-U>FzfRg<CR>', "<fnalias>")
+call roarie_commands#AddMapping("&File", "search_buffer_cur", "Search in &current buffer...", "Search in current buffer with fzf...", '', '<C-F10>', ':<C-U>FzfBLines<CR>', "<fnalias>")
+call roarie_commands#AddMapping("&File", "search_buffer_all", "Search in &all buffers...", "Search in all loaded buffers with fzf...", '', '<S-F10>', ':<C-U>FzfLines<CR>', "<fnalias>")
 call roarie_commands#AddSeparator("&File")
 call roarie_commands#AddMapping("&File", "terminal_open", "Open &terminal...", "Open a new terminal window", "<silent>", '<F11>', ':<C-U>terminal<CR>', "<fnalias>")
 call roarie_commands#AddMapping("&File", "terminal_open_tab", "Open &terminal tab...", "Open a new terminal tab", '', '<S-F11>', ':<C-U>tab terminal<CR>', "<fnalias>")
