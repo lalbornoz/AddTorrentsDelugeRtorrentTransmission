@@ -2,7 +2,7 @@
 " [Options] Defaults (formatting)
 "
 
-set bs=2			" Backspace over indent,eol,start
+set backspace=indent,eol,start	" Backspace over indent,eol,start
 set cinoptions=(0,W8,m1		" Set cindent options
 set nocindent nosmartindent	" Disable C & smart indenting by default
 set noexpandtab			" Don't expand tabs
