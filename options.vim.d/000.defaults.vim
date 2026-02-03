@@ -8,6 +8,7 @@ let mapleader="'"		" Set mapping leader string
 set complete-=i			" Exclude included files when completing keyword
 set display=truncate		" Always display as much as possible of the last line, wrapped in "@@@"
 set encoding=utf-8		" Global UTF-8 character encoding
+set history=1000		" Keep 1000 ":" commands and search patterns in history
 set mouse=a			" Enable the use of the mouse for all modes
 set noautoread			" Don't automatically re-read a file that has been changed outside of Vim
 set nobackup nowritebackup	" Don't write backups for existing files
