@@ -22,6 +22,7 @@ set sidescrolloff=10		" Keep at least 10 screen columns to the left/right of cur
 set virtualedit=block		" Allow virtual editing in Visual block mode
 
 colors gruvbox			" Select colourscheme
+filetype plugin indent on	" Enable file type detection & autoloading plugin files and indent file
 syntax on			" Turn on syntax highlighting
 
 " vim:filetype=vim noexpandtab sw=8 ts=8 tw=0
