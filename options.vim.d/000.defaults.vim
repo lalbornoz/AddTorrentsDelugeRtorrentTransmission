@@ -5,6 +5,7 @@
 let g:VM_leader="'"		" Set Visual-Multi (VM) leader
 let mapleader="'"		" Set mapping leader string
 
+set complete-=i			" Exclude included files when completing keyword
 set encoding=utf-8		" Global UTF-8 character encoding
 set mouse=a			" Enable the use of the mouse for all modes
 set noautoread			" Don't automatically re-read a file that has been changed outside of Vim
