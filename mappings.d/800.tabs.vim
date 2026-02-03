@@ -23,7 +23,7 @@ call roarie_commands#AddSeparator("&Tabs")
 call roarie_commands#AddMapping("&Tabs", "open_new_tab", "&Open a new tab page", "Open a new tab page", "<silent>", '<F8>', ':<C-U>tabnew<CR>', "<fnalias>", "ﱚ")
 call roarie_commands#AddMapping("&Tabs", "close_current_tab", "&Close current tab", "Close current tab", "<silent>", '<S-F8>', ':<C-U>close<CR>', "<fnalias>", "")
 call roarie_commands#AddMapping("&Tabs", "move_window_to_tab", "Move &window to new tab", "Move window to new tab page", "<silent>", '<M-t>', ':<C-U>wincmd T<CR>', "", "")
-call roarie_commands#AddMapping("&Tabs", "tab_move_left", "Move current tab to the &left", "Move current tab to the left", "<silent>", '<M-j>', ':<C-U>tabmove -1<CR>', "", "ﰰ")
-call roarie_commands#AddMapping("&Tabs", "tab_move_right", "Move current tab to the &right", "Move current tab to the right", "<silent>", '<M-k>', ':<C-U>tabmove +1<CR>', "", "ﰳ")
+call roarie_commands#AddMapping("&Tabs", "tab_move_left", "Move current tab to the &left", "Move current tab to the left", "<silent>", '<M-j>', ':<C-U>:if tabpagenr() > 1 \| tabmove -1 \| endif<CR>', "", "ﰰ")
+call roarie_commands#AddMapping("&Tabs", "tab_move_right", "Move current tab to the &right", "Move current tab to the right", "<silent>", '<M-k>', ':<C-U>:if tabpagenr() < tabpagenr(''$'') \| tabmove +1 \| endif<CR>', "", "ﰳ")
 
 " vim:filetype=vim noexpandtab sw=8 ts=8 tw=0
