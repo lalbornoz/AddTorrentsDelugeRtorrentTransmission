@@ -16,5 +16,6 @@ set t_Co=256			" Force 256 colour terminal
 set termwinkey=<C-T>		" Set key starts a command in a terminal window to CTRL-T
 set timeout timeoutlen=100	" Decrease escape sequences latency
 set viminfo=""			" Neither read nor write /viminfo/ file
+set wildmenu			" Use wildmenu for command-line completion
 
 " vim:filetype=vim noexpandtab sw=8 ts=8 tw=0
