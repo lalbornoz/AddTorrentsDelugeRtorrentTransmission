@@ -12,7 +12,6 @@ call roarie_commands#AddMapping("&Project", "git_diffsplit", "&Git diffsplit", "
 call roarie_commands#AddMapping("&Project", "git_submenu", "&Git submenu...", "Git submenu...", "<silent>", '<M-F6>', ':<C-U>call roarie_commands#OpenSubMenu("git_submenu")<CR>', "<fnalias>", "")
 call roarie_commands#AddSubMenu("git_submenu", "Git submenu")
 call roarie_commands#AddSubMenuItem("git_submenu", "git_status", " ", "Git stat&us", ":Git")
-call roarie_commands#AddSubMenuItem("git_submenu", "git_browse", " ", "&Browse in web front-end", ":GBrowse")
 call roarie_commands#AddSubMenuItem("git_submenu", "git_commit", " ", "&Record changes to the repository", ":Git commit")
 call roarie_commands#AddSubMenuItem("git_submenu", "git_rebase", " ", "Re&apply commits on top of another base tip", ":Git rebase")
 call roarie_commands#AddSubMenuItem("git_submenu", "git_write", " ", "Git &add with work tree file, Git checkout from index or blob", ":Gwrite")
