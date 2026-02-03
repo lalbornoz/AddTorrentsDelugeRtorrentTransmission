@@ -11,8 +11,6 @@ call roarie_commands#AddMapping("&Edit", "num_incr", "Increment &number", "Incre
 call roarie_commands#AddMapping("&Edit", "num_decr", "Decrement &number", "Decrement number under cursor", '<silent>', '<S-End>', '<C-X>', "", "")
 call roarie_commands#AddMapping("&Edit", "case_invert_word", "&Invert case of word", "Invert case of word under cursor", '<silent>', '<C-Home>', 'g~w', "", "")
 call roarie_commands#AddMapping("&Edit", "case_invert_line", "&Invert case of line", "Invert case of line under cursor", '<silent>', '<C-End>', 'g~~', "", "")
-call roarie_commands#AddMapping("&Edit", "bidi_enable", "Enable &bidirectionality", "Enable bidirectionality", '<silent>', '<M-Home>', ':<C-U>BidiEnable<CR>:KeyboardAutoEnable<CR>', "", "")
-call roarie_commands#AddMapping("&Edit", "bidi_disable", "Disable &bidirectionality", "Disable bidirectionality", '<silent>', '<M-End>', ':<C-U>BidiDisable<CR>:KeyboardAutoDisable<CR>', "", "")
 call roarie_commands#AddSeparator("&Edit")
 call roarie_commands#AddNMapping("&Edit", "filter_file", "&Filter file...", "Filter entire file through program w/ tab-complete from favourites prompt", '', '<F9>', ':FPC ', "<fnalias>", "")
 call roarie_commands#AddVMapping("&Edit", "filter_range", "&Filter range...", "Filter visual range through program w/ tab-complete from favourites prompt", '', '<F9>', ':FPCR ', "<fnalias>", "")
