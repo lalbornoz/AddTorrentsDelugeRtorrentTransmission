@@ -4,6 +4,7 @@
 
 set backspace=indent,eol,start	" Backspace over indent,eol,start
 set cinoptions=(0,W8,m1		" Set cindent options
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nocindent nosmartindent	" Disable C & smart indenting by default
 set noexpandtab			" Don't expand tabs
 set nowrap			" Don't wrap long lines
