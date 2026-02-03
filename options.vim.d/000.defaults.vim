@@ -13,6 +13,7 @@ set mouse=a			" Enable the use of the mouse for all modes
 set noautoread			" Don't automatically re-read a file that has been changed outside of Vim
 set nobackup nowritebackup	" Don't write backups for existing files
 set nohidden			" Abandon buffer when unloaded
+set nolangremap			" Never apply 'langmap' to characters resulting from a mapping
 set noundofile			" Do not automatically saves undo history
 set t_Co=256			" Force 256 colour terminal
 set tabpagemax=15		" Maximum of 15 tab pages
