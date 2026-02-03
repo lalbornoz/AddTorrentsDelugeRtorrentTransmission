@@ -31,9 +31,6 @@
 [submodule "bundle/vim-lsp"]
 	path = bundle/vim-lsp
 	url = https://github.com/lalbornoz/vim-lsp
-[submodule "bundle/vim-greppie"]
-	path = bundle/vim-greppie
-	url = https://github.com/lalbornoz/vim-greppie
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch
