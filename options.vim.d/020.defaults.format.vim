@@ -8,6 +8,7 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nocindent nosmartindent	" Disable C & smart indenting by default
 set noexpandtab			" Don't expand tabs
 set nowrap			" Don't wrap long lines
+set nrformats-=octal		" Exclude octal when adding/substracting from number in text
 set sw=8 ts=8			" Shift width, tab stops
 set tw=125			" Maximum width of text that is being inserted
 set wildmode=longest,list,full	" Completion mode [for] wildcard expansion in the command-line
