@@ -52,3 +52,6 @@
 [submodule "bundle/vim-polyglot"]
 	path = bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule "bundle/Colorizer"]
+	path = bundle/Colorizer
+	url = https://github.com/chrisbra/Colorizer
