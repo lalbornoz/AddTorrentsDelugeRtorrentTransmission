@@ -50,6 +50,38 @@ map <Esc>[1;8C		<M-C-S-Right>
 map <Esc>[1;8D		<M-C-S-Left>
 " }}}
 
+" {{{ <Ctrl>, <Ctrl><Shift>, <Alt>, <Alt><Shift> navigation keys w/ modifiers
+map <Esc>[2;5~		<C-Insert>
+map <Esc>[2;6~		<C-S-Insert>
+map <Esc>[2;3~		<M-Insert>
+map <Esc>[2;4~		<M-S-Insert>
+
+map <Esc>[3;5~		<C-Delete>
+map <Esc>[3;6~		<C-S-Delete>
+map <Esc>[3;3~		<M-Delete>
+map <Esc>[3;4~		<M-S-Delete>
+
+map <Esc>[1;5H		<C-Home>
+map <Esc>[1;6H		<C-S-Home>
+map <Esc>[1;3H		<M-Home>
+map <Esc>[1;4H		<M-S-Home>
+
+map <Esc>[1;5F		<C-End>
+map <Esc>[1;6F		<C-S-End>
+map <Esc>[1;3F		<M-End>
+map <Esc>[1;4F		<M-S-End>
+
+map <Esc>[5;5~		<C-PageUp>
+map <Esc>[5;6~		<C-S-PageUp>
+map <Esc>[5;3~		<M-PageUp>
+map <Esc>[5;4~		<M-S-PageUp>
+
+map <Esc>[6;5~		<C-PageDown>
+map <Esc>[6;6~		<C-S-PageDown>
+map <Esc>[6;3~		<M-PageDown>
+map <Esc>[6;4~		<M-S-PageDown>
+" }}}
+
 " {{{ Function key pseudo-mappings
 map <Esc>[OP		<F1>
 map <Esc>[OQ		<F2>
