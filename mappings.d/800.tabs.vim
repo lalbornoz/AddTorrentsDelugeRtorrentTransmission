@@ -12,6 +12,7 @@ call roarie_commands#AddMapping("&Tabs", "tab_goto6", "&Go to tab #6", '', '<sil
 call roarie_commands#AddMapping("&Tabs", "tab_goto7", "&Go to tab #7", '', '<silent>', '<M-7>', '7gt', "", "")
 call roarie_commands#AddMapping("&Tabs", "tab_goto8", "&Go to tab #8", '', '<silent>', '<M-8>', '8gt', "", "")
 call roarie_commands#AddMapping("&Tabs", "tab_goto9", "&Go to tab #9", '', '<silent>', '<M-9>', '9gt', "", "")
+call roarie_commands#AddMapping("&Tabs", "tab_goto10", "&Go to tab #10", '', '<silent>', '<M-0>', '10gt', "", "")
 call roarie_commands#AddSeparator("&Tabs")
 call roarie_commands#AddMapping("&Tabs", "tab_goto_prev", "Go to &previous tab", "Go to previous tab page w/ wraparound", "<silent>", '<M-S-Left>', ':<C-U>tabprev<CR>', "", "﮿")
 call roarie_commands#AddMapping("&Tabs", "tab_goto_next", "Go to &next tab", "Go to next tab page w/ wraparound", "<silent>", '<M-S-Right>', ':<C-U>tabnext<CR>', "", "﯀")
