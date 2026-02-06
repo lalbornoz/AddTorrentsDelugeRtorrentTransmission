@@ -13,6 +13,7 @@ call roarie_commands#AddMapping("&File", "fzf_changes", "Show change&list...", "
 call roarie_commands#AddMapping("&File", "fzf_marks", "Show ma&rks...", "Show marks in the current buffer with fzf...", '', '<S-F11>', ':<C-U>FzfBMarks<CR>', "<fnalias>")
 call roarie_commands#AddMapping("&File", "fzf_jumps", "Show &jumps...", "Show jumps in the current buffer with fzf...", '', '<C-F11>', ':<C-U>FzfJumps<CR>', "<fnalias>")
 call roarie_commands#AddMapping("&File", "fzf_windows", "Show &windows...", "Show windows with fzf...", '', '<M-F11>', ':<C-U>FzfWindows<CR>', "<fnalias>")
+call roarie_commands#AddMapping("&File", "show_registers", "Show re&gisters...", "Show registers...", '', '<M-S-F11>', ':<C-U>registers<CR>', "<fnalias>")
 call roarie_commands#AddSeparator("&File")
 call roarie_commands#AddMapping("&File", "terminal_open", "Open &terminal...", "Open a new terminal window", "<silent>", '<F12>', ':<C-U>terminal<CR>', "<fnalias>")
 call roarie_commands#AddMapping("&File", "terminal_open_tab", "Open &terminal tab...", "Open a new terminal tab", '', '<S-F12>', ':<C-U>tab terminal<CR>', "<fnalias>")
