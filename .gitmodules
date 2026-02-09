@@ -10,6 +10,7 @@
 [submodule "bundle/LargeFile"]
 	path = bundle/LargeFile
 	url = https://github.com/vim-scripts/LargeFile
+	ignore = untracked
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
