@@ -18,7 +18,8 @@ set noundofile			" Do not automatically saves undo history
 set t_Co=256			" Force 256 colour terminal
 set tabpagemax=15		" Maximum of 15 tab pages
 set termwinkey=<C-T>		" Set key starts a command in a terminal window to CTRL-T
-set timeout timeoutlen=100	" Decrease escape sequences latency
+set timeout timeoutlen=100	" Decrease mapped key sequences latency
+set ttimeout ttimeoutlen=100	" Decrease key code sequences latency
 set viminfo=""			" Neither read nor write /viminfo/ file
 set wildmenu			" Use wildmenu for command-line completion
 
