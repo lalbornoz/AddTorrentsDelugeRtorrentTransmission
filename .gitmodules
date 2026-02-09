@@ -9,7 +9,7 @@
 	url = https://github.com/itchyny/lightline.vim
 [submodule "bundle/LargeFile"]
 	path = bundle/LargeFile
-	url = https://github.com/lalbornoz/LargeFile
+	url = https://github.com/vim-scripts/LargeFile
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
