@@ -2,7 +2,7 @@
 " (see <https://github.com/yegappan/lsp/blob/main/doc/configs.md#bash-language-server>)
 "
 
-" {{{ Clangd
+" {{{ C/C++: clangd
 if executable('clangd')
 	augroup lsp_clangd
 		autocmd!
@@ -10,7 +10,7 @@ if executable('clangd')
 			\ call LspAddServer(
 				\ [#{name:	'clangd',
 				\    filetype:	['c', 'cpp'],
-				\    path:	'/usr/local/bin/clangd',
+				\    path:	'clangd',
 				\    args:	['--background-index', '--clang-tidy']
 				\ }]) |
 			\
@@ -20,6 +20,29 @@ if executable('clangd')
 				\ })
 
 		autocmd User LspAttached if &filetype =~# 'c\|cpp'	|
+			\	setlocal omnifunc=g:LspOmniFunc		|
+			\ endif
+	augroup end
+endif
+" }}}
+" {{{ Python: pylsp
+if executable('pylsp')
+	augroup lsp_pylsp
+		autocmd!
+		autocmd BufReadPre *.py
+			\ call LspAddServer(
+				\ [#{name:	'pylsp',
+				\    filetype:	'python',
+				\    path:	'pylsp',
+				\    args:	[]
+			\ }]) |
+			\
+			\ call LspOptionsSet(
+				\ #{autoComplete: v:false,
+				\   omniComplete: v:true,
+				\ })
+
+		autocmd User LspAttached if &filetype =~# 'python'	|
 			\	setlocal omnifunc=g:LspOmniFunc		|
 			\ endif
 	augroup end
