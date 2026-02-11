@@ -2,9 +2,6 @@
 " (see <https://github.com/yegappan/lsp/blob/main/doc/configs.md#bash-language-server>)
 "
 
-" Close any "Preview" windows open after Insert mode completion has concluded.
-autocmd CompleteDone * pclose
-
 " {{{ Clangd
 if executable('clangd')
 	augroup lsp_clangd
