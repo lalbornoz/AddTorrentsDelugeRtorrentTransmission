@@ -1,19 +1,4 @@
 "
-" Vim:
-" Load all Vim plugins w/ pathogen.vim.
-"
-
-for f in
-	\ glob("~/.vim/options.bundle.d/*.vim", 0, 1) +
-	\ glob("~/.vim/autoload.vim/*.vim", 0, 1)
-	\
-	if filereadable(f)
-		execute("source " . f)
-	endif
-endfor | unlet f
-execute pathogen#infect('bundle/{}')
-
-"
 " This is a special kind of option, because when it's set or reset, other
 " options are also changed as a side effect.  CAREFUL: Setting or resetting
 " this option can have a lot of unexpected effects: Mappings are interpreted
@@ -36,11 +21,10 @@ filet plugin indent on|		" Enable loading indent file for specific file types
 " post-initialisation finalisation additions, if any.
 "
 for f in
+	\ glob("~/.vim/options.bundle.d/*.vim", 0, 1) +
 	\ glob("~/.vim/options.vim.d/*.vim", 0, 1) +
-	\ glob("~/.vim/options.bundle-post.d/*.vim", 0, 1) +
 	\ glob("~/.vim/commands.d/*.vim", 0, 1) +
 	\ glob("~/.vim/mappings.d/*.vim", 0, 1) +
-	\ glob("~/.vim/options.fini.d/*.vim", 0, 1) +
 	\ [expand("~/.vim/rc.local")]
 	\
 	if filereadable(f)

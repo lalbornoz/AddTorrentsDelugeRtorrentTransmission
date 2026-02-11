@@ -1,52 +1,52 @@
 [submodule "bundle/gruvbox"]
-	path = bundle/gruvbox
+	path = pack/gruvbox/start/gruvbox
 	url = https://github.com/morhetz/gruvbox/
 [submodule "bundle/lightline.vim"]
-	path = bundle/lightline.vim
+	path = pack/lightline.vim/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
 [submodule "bundle/LargeFile"]
-	path = bundle/LargeFile
+	path = pack/LargeFile/start/LargeFile
 	url = https://github.com/vim-scripts/LargeFile
 	ignore = untracked
 [submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
+	path = pack/nerdtree/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
 [submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
+	path = pack/vim-fugitive/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "bundle/vim-man"]
-	path = bundle/vim-man
+	path = pack/vim-man/start/vim-man
 	url = https://github.com/vim-utils/vim-man
 [submodule "bundle/vim-tmux-navigator"]
-	path = bundle/vim-tmux-navigator
+	path = pack/vim-tmux-navigator/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
 [submodule "bundle/vim-quickui"]
-	path = bundle/vim-quickui
+	path = pack/vim-quickui/start/vim-quickui
 	url = https://github.com/skywind3000/vim-quickui
 [submodule "bundle/vim-dispatch"]
-	path = bundle/vim-dispatch
+	path = pack/vim-dispatch/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch
 [submodule "bundle/hexmode"]
-	path = bundle/hexmode
+	path = pack/hexmode/start/hexmode
 	url = https://github.com/fidian/hexmode
 [submodule "bundle/roarie-commands.vim"]
-	path = bundle/roarie-commands.vim
+	path = pack/roarie-commands.vim/start/roarie-commands.vim
 	url = https://github.com/lalbornoz/roarie-commands.vim
 [submodule "bundle/roarie-startup.vim"]
-	path = bundle/roarie-startup.vim
+	path = pack/roarie-startup.vim/start/roarie-startup.vim
 	url = https://github.com/lalbornoz/roarie-startup.vim
 [submodule "bundle/fzf"]
-	path = bundle/fzf
+	path = pack/fzf/start/fzf
 	url = https://github.com/junegunn/fzf
 [submodule "bundle/fzf.vim"]
-	path = bundle/fzf.vim
+	path = pack/fzf.vim/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 [submodule "bundle/vim-polyglot"]
-	path = bundle/vim-polyglot
+	path = pack/vim-polyglot/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
 [submodule "bundle/Colorizer"]
-	path = bundle/Colorizer
+	path = pack/Colorizer/start/Colorizer
 	url = https://github.com/chrisbra/Colorizer
 [submodule "bundle/lsp"]
-	path = bundle/lsp
+	path = pack/lsp/start/lsp
 	url = https://github.com/yegappan/lsp
