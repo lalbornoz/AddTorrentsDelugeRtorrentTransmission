@@ -13,8 +13,6 @@
 " file, nor for a file given with the |-u| argument).
 "
 set nocompatible
-filet on | filet plugin on|	" Enable file type detection, load plugin files
-filet plugin indent on|		" Enable loading indent file for specific file types
 
 "
 " Source set of run-command Vim files in order, local additions, and
