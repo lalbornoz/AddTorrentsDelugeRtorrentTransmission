@@ -31,7 +31,7 @@
 	url = https://github.com/skywind3000/vim-quickui
 [submodule "bundle/vim-lsp"]
 	path = bundle/vim-lsp
-	url = https://github.com/lalbornoz/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch
