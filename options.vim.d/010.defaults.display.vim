@@ -19,16 +19,8 @@ set showcmd			" Show (partial) command in the last line
 set scrolloff=10		" Keep at least 10 screen lines above/below cursor
 set sidescroll=10		" Scroll 10 columns horizontally at minimum
 set sidescrolloff=10		" Keep at least 10 screen columns to the left/right of cursor
+set termguicolors		" Enable 24-bit color terminal mode
 set virtualedit=block		" Allow virtual editing in Visual block mode
-
-"
-" Enable 24-bit colours in non-GUI {screen,tmux} sessions
-"
-if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-set termguicolors
 
 colors gruvbox			" Select colourscheme
 filetype plugin indent on	" Enable file type detection & autoloading plugin files and indent file
