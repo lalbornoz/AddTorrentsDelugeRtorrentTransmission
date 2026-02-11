@@ -4,14 +4,9 @@
 "
 
 for f in
-	\ glob("~/.vim/options.bundle.d/*.vim", 0, 1)
+	\ glob("~/.vim/options.bundle.d/*.vim", 0, 1) +
+	\ glob("~/.vim/autoload.vim/*.vim", 0, 1)
 	\
-	if filereadable(f)
-		execute("source " . f)
-	endif
-endfor | unlet f
-
-for f in glob("~/.vim/autoload.vim/*.vim", 0, 1)
 	if filereadable(f)
 		execute("source " . f)
 	endif
