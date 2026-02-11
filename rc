@@ -21,7 +21,7 @@ filet plugin indent on|		" Enable loading indent file for specific file types
 " post-initialisation finalisation additions, if any.
 "
 for f in
-	\ glob("~/.vim/options.bundle.d/*.vim", 0, 1) +
+	\ glob("~/.vim/options.pack.d/*.vim", 0, 1) +
 	\ glob("~/.vim/options.vim.d/*.vim", 0, 1) +
 	\ glob("~/.vim/commands.d/*.vim", 0, 1) +
 	\ glob("~/.vim/commands.auto.d/*.vim", 0, 1) +
