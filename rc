@@ -1,22 +1,16 @@
 "
-" This is a special kind of option, because when it's set or reset, other
-" options are also changed as a side effect.  CAREFUL: Setting or resetting
-" this option can have a lot of unexpected effects: Mappings are interpreted
-" in another way, undo behaves differently, etc.  If you set this option in
-" your vimrc file, you should probably put it at the very start.
-" [ ... ]
-" When a |vimrc| or |gvimrc| file is found while Vim is starting up, this option
-" is switched off, and all options that have not been modified will be set to
-" the Vim defaults.  Effectively, this means that when a |vimrc| or |gvimrc|
-" file exists, Vim will use the Vim defaults, otherwise it will use the Vi
-" defaults.  (Note: This doesn't happen for the system-wide vimrc or gvimrc
-" file, nor for a file given with the |-u| argument).
+" Disable Vi backwards compatibility at the very start (as per the Vim
+" documentation: "This is a special kind of option, because when it's set
+" or reset, other options are also changed as a side effect. NOTE: Setting or
+" resetting this option can have a lot of unexpected effects: Mappings are
+" interpreted in another way, undo behaves differently, etc.  If you set this
+" option in your vimrc file, you should probably put it at the very start.")
 "
 set nocompatible
 
 "
-" Source set of run-command Vim files in order, local additions, and
-" post-initialisation finalisation additions, if any.
+" Source set of run-command Vim files setting/adding Vim options, plugin options,
+" commands, autocommands, mappings, and user-local additions, if any.
 "
 for f in
 	\ glob("~/.vim/options.vim.d/*.vim", 0, 1) +
