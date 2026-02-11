@@ -24,6 +24,7 @@ for f in
 	\ glob("~/.vim/options.bundle.d/*.vim", 0, 1) +
 	\ glob("~/.vim/options.vim.d/*.vim", 0, 1) +
 	\ glob("~/.vim/commands.d/*.vim", 0, 1) +
+	\ glob("~/.vim/commands.auto.d/*.vim", 0, 1) +
 	\ glob("~/.vim/mappings.d/*.vim", 0, 1) +
 	\ [expand("~/.vim/rc.local")]
 	\
