@@ -3,12 +3,12 @@
 "
 
 call roarie_commands#AddMenu("&Windows")
-call roarie_commands#AddMapping("&Windows", "create_window", "&Create new window", "Create new window", '<silent>', '<F7>', ':<C-U>new<CR>', "<fnalias>", "")
+call roarie_commands#AddMapping("&Windows", "create_window", "&Create new window", "Create new window", '<silent>', '<F7>', ':<C-U>new<CR>', "<fnalias>", "")
 call roarie_commands#AddMapping("&Windows", "split_window", "&Split window", "Split current window in two", "<silent>", '<C-t>', ':<C-U>wincmd s<CR>', "", "")
 call roarie_commands#AddMapping("&Windows", "create_window_vertical", "&Create new vertically split window", "Create new vertically split window", '<silent>', '<S-F7>', ':<C-U>vnew<CR>', "<fnalias>", "")
 call roarie_commands#AddMapping("&Windows", "rotate_windows_downright", "Rotate &windows down/right", "Rotate windows downwards/rightwards", '<silent>', '<C-F7>', ':<C-U>wincmd r<CR>', "<fnalias>", "")
 call roarie_commands#AddMapping("&Windows", "rotate_windows_upleft", "Rotate &windows up/left", "Rotate windows upwards/leftwards", '<silent>', '<C-S-F7>', ':<C-U>wincmd R<CR>', "<fnalias>", "")
-call roarie_commands#AddMapping("&Windows", "close_current_window", "&Close current window", "Close current window", '<silent>', '<S-F8>', ':<C-U>close<CR>', "<fnalias>", "")
+call roarie_commands#AddMapping("&Windows", "close_current_window", "&Close current window", "Close current window", '<silent>', '<S-F8>', ':<C-U>close<CR>', "<fnalias>", "")
 call roarie_commands#AddSeparator("&Windows")
 call roarie_commands#AddMapping("&Windows", "decr_win_height", "&Decrease window height", "Decrease current window height by 3", "<silent>", '<M-S-Up>', ':<C-U>resize -3<CR>', "", "")
 call roarie_commands#AddMapping("&Windows", "incr_win_height", "&Increase window height", "Increase current window height by 3", "<silent>", '<M-S-Down>', ':<C-U>resize +3<CR>', "", "")

@@ -25,7 +25,7 @@ call roarie_commands#AddMapping("&Motion", "motion_cursor_prev", "Go to previous
 call roarie_commands#AddMapping("&Motion", "motion_cursor_next", "Go to next &cursor position", "Go to next cursor position in jump list", '', '<S-Right>', '<C-I>', "", "ﲔ")
 call roarie_commands#AddMapping("&Motion", "motion_occur_prev", "Go to previous &occurrence", "Go to previous occurrence of the word nearest to the cursor", '', '<S-Up>', '#', "", "")
 call roarie_commands#AddMapping("&Motion", "motion_occur_next", "Go to next &occurrence", "Go to next occurrence of the word nearest to the cursor", '', '<S-Down>', '*', "", "")
-call roarie_commands#AddMapping("&Motion", "motion_item_next", "Go to next &item", "Go to next item in this line after or under the cursor and jump to its match", "<silent>", '<M-PageUp>', ':<C-U>call matchit#Match_wrapper('''',1,''n'')<CR>', "", "")
-call roarie_commands#AddMapping("&Motion", "motion_item_prev", "Go to previous &item", "Go to previous item in this line after or under the cursor and jump to its match", "<silent>", '<M-PageDown>', ':<C-U>call matchit#Match_wrapper('''',0,''n'')<CR>', "", "")
+call roarie_commands#AddMapping("&Motion", "motion_item_prev", "Go to previous &item", "Go to previous item in this line after or under the cursor and jump to its match", "<silent>", '<M-PageUp>', ':<C-U>call matchit#Match_wrapper('''',0,''n'')<CR>', "", "󱉜")
+call roarie_commands#AddMapping("&Motion", "motion_item_next", "Go to next &item", "Go to next item in this line after or under the cursor and jump to its match", "<silent>", '<M-PageDown>', ':<C-U>call matchit#Match_wrapper('''',1,''n'')<CR>', "", "󱉚")
 
 " vim:filetype=vim noexpandtab sw=8 ts=8 tw=0
