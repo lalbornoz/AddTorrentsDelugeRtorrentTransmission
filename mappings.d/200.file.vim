@@ -4,7 +4,7 @@
 
 call roarie_commands#AddMenu("&File")
 call roarie_commands#AddMapping("&File", "open_menu", "Open &menu...", "Open menu...", '<silent>', '<M-m>', ':<C-U>call roarie_commands#OpenMenu()<CR>', "", "󰍜")
-call roarie_commands#AddIMapping("&File", "exit_insert", "E&xit insert mode", "Exit insert mode", '', '<C-Q>', '<Esc>', "", "")
+call roarie_commands#AddIMapping("&File", "exit_insert", "E&xit insert mode", "Exit insert mode", '', '<C-Q>', '<Esc>', "", "󰿅")
 call roarie_commands#AddTMapping("&File", "switch_normal_mode_terminal", "Switch to &normal mode (terminal)", "Switch to normal mode (terminal job mode)", "<silent>", '<C-b>', '<C-T>N', "", "")
 call roarie_commands#AddSeparator("&File")
 call roarie_commands#AddMapping("&File", "search_files_rg", "&Search in files...", "Search in files with fzf and ripgrep...", '', '<F10>', ':<C-U>FzfRg<CR>', "<fnalias>", "")
